@@ -3,11 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const Catalog = () => {
     const [filter, setFilter] = useState('All');
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const categories = ['All', 'Gold', 'Antique', 'Necklace', 'Rings', 'Bangles', 'Diamond', 'Silver'];
 
@@ -119,7 +121,7 @@ const Catalog = () => {
                                     <h3 className="text-white text-xl font-serif font-bold">{product.title}</h3>
                                     <p className="text-gold-300 text-sm uppercase tracking-wider mb-3">{product.category}</p>
                                     <button
-                                        onClick={() => window.location.href = `/contact?product=${encodeURIComponent(product.title)}`}
+                                        onClick={() => navigate(`/contact?product=${encodeURIComponent(product.title)}`)}
                                         className="bg-white text-dark-900 px-4 py-2 text-sm font-medium w-fit hover:bg-gold-500 hover:text-white transition-colors"
                                     >
                                         Inquire Now
