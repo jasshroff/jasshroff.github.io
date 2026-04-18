@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /build/
+Disallow: /dist/
 
 Sitemap: https://sgvjewellers.in/sitemap.xml
