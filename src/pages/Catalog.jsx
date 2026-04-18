@@ -85,6 +85,13 @@ const Catalog = () => {
             <Helmet>
                 <title>Catalog - Shree Gopaldas Vallabhdas Jewellers</title>
                 <meta name="description" content="Explore our exquisite collection of Gold, Antique, and Diamond jewelry." />
+                
+                {/* Open Graph Tags */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://sgvjewellers.in/catalog" />
+                <meta property="og:title" content="Our Catalog | Exclusive Jewellery | SGV" />
+                <meta property="og:description" content="Certified gold, diamond, and antique jewelry collections." />
+                <meta property="og:image" content="https://sgvjewellers.in/images/main/catalog/310x585_1.png" />
             </Helmet>
 
             {/* Hero Header */}
