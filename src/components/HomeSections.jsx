@@ -41,7 +41,7 @@ export const CollectionGrid = () => {
                                 <div className="aspect-[4/3] overflow-hidden bg-gray-100">
                                     <img
                                         src={item.image}
-                                        alt={item.title}
+                                        alt={`SGV Jewellers ${item.title} Collection Burhanpur`}
                                         className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                                     />
                                 </div>
@@ -95,7 +95,7 @@ export const BestSellers = () => {
                             <div className="relative overflow-hidden mb-4 bg-gray-100 aspect-square flex items-center justify-center">
                                 <img
                                     src={product.image}
-                                    alt={product.title}
+                                    alt={`Best Seller ${product.title} - SGV Jewellers Burhanpur`}
                                     className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-2">

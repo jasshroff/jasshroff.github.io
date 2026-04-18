@@ -1,0 +1,17 @@
+{
+  "name": "Shree Gopaldas Vallabhdas Jewellers",
+  "short_name": "SGV Jewellers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4aa1e",
+  "description": "Premium certified gold, diamond, and antique jewellery in Burhanpur since 1938.",
+  "icons": [
+    {
+      "src": "/sgv.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

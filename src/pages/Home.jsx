@@ -12,6 +12,48 @@ const Home = () => {
                 {/* Search Keywords */}
                 <meta name="keywords" content="Best jewellers in Burhanpur, gold jewellery shop Burhanpur, antique jewellery Burhanpur, diamond jewellery Burhanpur, Shree Gopaldas Vallabhdas Jewellers, trusted jewellers in Burhanpur, gold shop Pandumal Chouraha" />
 
+                {/* Structured Data (Schema.org) for Google Ranking */}
+                <script type="application/ld+json">
+                {`
+                {
+                  "@context": "https://schema.org",
+                  "@type": "JewelryStore",
+                  "name": "Shree Gopaldas Vallabhdas Jewellers",
+                  "alternateName": "SGV Jewellers",
+                  "url": "https://sgvjewellers.in/",
+                  "logo": "https://sgvjewellers.in/images/main/sgv.png",
+                  "image": "https://sgvjewellers.in/images/main/sgv_Collage.png",
+                  "description": "Premium certified gold, diamond, and antique jewellery showroom in Burhanpur. Established in 1938.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "17, Shreenath Sadan, Pandumal Chouraha, Tilak Marg Road",
+                    "addressLocality": "Burhanpur",
+                    "addressRegion": "MP",
+                    "postalCode": "450331",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 21.3121,
+                    "longitude": 76.2233
+                  },
+                  "telephone": "+91-9179559000",
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                      "opens": "10:00",
+                      "closes": "21:00"
+                    }
+                  ],
+                  "priceRange": "$$$",
+                  "sameAs": [
+                    "https://www.instagram.com/shreegopaldasvallabhdas"
+                  ]
+                }
+                `}
+                </script>
+
                 {/* Open Graph Tags */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://sgvjewellers.in/" />
