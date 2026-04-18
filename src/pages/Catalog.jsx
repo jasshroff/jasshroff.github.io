@@ -140,16 +140,14 @@ const Catalog = () => {
             {/* Product Grid */}
             <section className="py-20 container mx-auto px-4">
                 <motion.div
-                    variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    layout
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredProducts.map((product) => (
                             <motion.div
-                                layout
+                                layout="position"
                                 variants={itemVariants}
                                 initial="hidden"
                                 animate="visible"
@@ -162,8 +160,8 @@ const Catalog = () => {
                   ${product.type === 'vertical' ? 'row-span-2' : ''}
                 `}
                             >
-                                <div className="relative aspect-[4/5] sm:aspect-auto sm:h-full w-full min-h-[350px] overflow-hidden">
-                                    <motion.img
+                                <div className="relative aspect-[4/5] sm:aspect-auto sm:h-full w-full min-h-[350px] overflow-hidden bg-gray-100">
+                                    <img
                                         src={product.image}
                                         alt={product.title}
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -172,8 +170,6 @@ const Catalog = () => {
                                     {/* Glassmorphism Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
                                         <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
                                             className="space-y-4"
                                         >
                                             <div>
