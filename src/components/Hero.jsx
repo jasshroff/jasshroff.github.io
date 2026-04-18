@@ -31,7 +31,7 @@ const Hero = () => {
             image: '/images/main/Banner_Customised_Jewellery.png',
             title: 'Customised Jewellery',
             subtitle: 'Your Vision, Our Craft: Exquisite Custom Jewellery Made Just for You.',
-            link: '/contact',
+            link: '/contact-us',
             position: 'justify-start',
         },
     ];

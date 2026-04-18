@@ -188,7 +188,7 @@ const Catalog = () => {
                                             <div className="h-px w-12 bg-gold-500/50" />
                                             
                                             <button
-                                                onClick={() => navigate(`/contact?product=${encodeURIComponent(product.title)}`)}
+                                                onClick={() => navigate(`/contact-us?product=${encodeURIComponent(product.title)}`)}
                                                 className="group/btn relative inline-flex items-center gap-2 bg-transparent border border-gold-500/50 text-white px-6 py-3 text-xs uppercase tracking-widest font-bold hover:bg-gold-500 hover:border-gold-500 transition-all duration-300"
                                             >
                                                 <span>Inquire Now</span>

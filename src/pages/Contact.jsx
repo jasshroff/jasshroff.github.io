@@ -25,6 +25,14 @@ const Contact = () => {
         const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
         const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+        if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+            console.error('EmailJS credentials missing. Please check your GitHub Secrets or .env file.');
+            setStatus('FAILED');
+            setErrorMessage('Email configuration is missing. If you are the owner, please add your EmailJS keys to GitHub Secrets.');
+            setIsSending(false);
+            return;
+        }
+
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
@@ -34,7 +42,7 @@ const Contact = () => {
             }, (error) => {
                 console.log(error.text);
                 setStatus('FAILED');
-                setErrorMessage(error.text || 'Unknown error occurred');
+                setErrorMessage(error.text || 'Failed to send email. Please check your EmailJS dashboard.');
                 setIsSending(false);
             });
     };

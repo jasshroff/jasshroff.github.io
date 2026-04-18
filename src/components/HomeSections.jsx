@@ -143,7 +143,7 @@ export const QualityCTA = () => {
                             Gold is the most ductile and malleable of all metals, and its craftsmanship brings beauty and elegance beyond measure.
                         </p>
                         <div className="text-gold-300 font-serif italic mb-8">- Pliny the Elder</div>
-                        <Link to="/about" className="inline-block border-2 border-white text-white px-8 py-3 hover:bg-gold-500 hover:border-gold-500 transition-all uppercase tracking-widest text-sm font-medium">
+                        <Link to="/about-us" className="inline-block border-2 border-white text-white px-8 py-3 hover:bg-gold-500 hover:border-gold-500 transition-all uppercase tracking-widest text-sm font-medium">
                             View Our Services
                         </Link>
                     </motion.div>
