@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
+    const mapRef = useRef(null);
     const [status, setStatus] = useState(''); // 'SUCCESS' | 'FAILED' | ''
     const [errorMessage, setErrorMessage] = useState('');
     const [isSending, setIsSending] = useState(false);
@@ -14,35 +15,66 @@ const Contact = () => {
     const [searchParams] = useSearchParams();
     const product = searchParams.get('product');
 
+    useEffect(() => {
+        if (!mapRef.current || !window.google) return;
+
+        const position = { lat: 21.3121, lng: 76.2233 };
+        
+        const map = new window.google.maps.Map(mapRef.current, {
+            center: position,
+            zoom: 17,
+            disableDefaultUI: false,
+            styles: [
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [{ visibility: "off" }]
+                },
+                {
+                    featureType: "transit",
+                    elementType: "labels",
+                    stylers: [{ visibility: "off" }]
+                },
+                {
+                    featureType: "poi.business",
+                    stylers: [{ visibility: "off" }]
+                }
+            ]
+        });
+
+        new window.google.maps.Marker({
+            position: position,
+            map: map,
+            title: 'Shree Gopaldas Vallabhdas Jewellers',
+            animation: window.google.maps.Animation.DROP
+        });
+    }, []);
+
     const sendEmail = (e) => {
         e.preventDefault();
         setIsSending(true);
         setStatus('');
 
-        // Replace these with your actual EmailJS Service ID, Template ID, and Public Key
-        // It's best practice to use environment variables for these values
         const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
         const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
         const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
         if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-            console.error('EmailJS credentials missing. Please check your GitHub Secrets or .env file.');
+            console.error('EmailJS credentials missing');
             setStatus('FAILED');
-            setErrorMessage('Email configuration is missing. If you are the owner, please add your EmailJS keys to GitHub Secrets.');
+            setErrorMessage('Email configuration is missing. Please add your EmailJS keys to GitHub Secrets.');
             setIsSending(false);
             return;
         }
 
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
-                console.log(result.text);
                 setStatus('SUCCESS');
                 setIsSending(false);
                 form.current.reset();
             }, (error) => {
-                console.log(error.text);
                 setStatus('FAILED');
-                setErrorMessage(error.text || 'Failed to send email. Please check your EmailJS dashboard.');
+                setErrorMessage(error.text || 'Failed to send email.');
                 setIsSending(false);
             });
     };
@@ -106,7 +138,6 @@ const Contact = () => {
                                 <div className="text-red-500 font-medium">
                                     <p>Failed to send message.</p>
                                     <p className="text-sm mt-1">Error: {errorMessage}</p>
-                                    <p className="text-sm mt-1 text-gray-500">Note: Please verify your internet connection and that all fields are filled correctly.</p>
                                 </div>
                             )}
                         </form>
@@ -169,17 +200,13 @@ const Contact = () => {
                 </div>
             </section>
 
-            {/* Map (Placeholder) */}
-            <section className="h-96 w-full bg-gray-200">
-                <iframe
-                    src="https://maps.google.com/maps?q=Shree%20Gopaldas%20Vallabhdas%20Jewellers%2C%20Burhanpur&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
+            {/* Stylized Solo Map */}
+            <section className="h-[500px] w-full bg-gray-100 border-t border-b border-gold-200 overflow-hidden">
+                <div 
+                    ref={mapRef} 
+                    className="w-full h-full grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
                     title="SGV Jewellers Location"
-                ></iframe>
+                ></div>
             </section>
         </div>
     );
