@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -20,8 +20,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="about-us" element={<About />} />
+            <Route path="contact-us" element={<Contact />} />
+            
+            {/* Redirects for legacy/shorter paths */}
+            <Route path="about" element={<Navigate to="/about-us" replace />} />
+            <Route path="contact" element={<Navigate to="/contact-us" replace />} />
             <Route path="catalog" element={<Catalog />} />
             <Route path="login" element={<Login />} />
             <Route
