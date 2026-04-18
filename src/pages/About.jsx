@@ -12,8 +12,9 @@ const About = () => {
     return (
         <div className="animate-fade-in bg-white">
             <Helmet>
-                <title>About Us - Shree Gopaldas Vallabhdas Jewellers</title>
-                <meta name="description" content="Learn about our 85+ years of legacy, trust, and excellence in jewelry making." />
+                <title>Our Heritage - 85+ Years of Trust | SGV Jewellers Burhanpur</title>
+                <meta name="description" content="Established in 1938, Shree Gopaldas Vallabhdas Jewellers is Burhanpur's first and most trusted jewellery legacy. Learn about our journey of quality, craftsmanship, and the trust of generations." />
+                <meta name="keywords" content="Legacy jewellers Burhanpur, heritage jewellery store, shroff family burhanpur, oldest jewellery shop burhanpur, trusted goldsmith burhanpur" />
             </Helmet>
 
             {/* Hero Header */}

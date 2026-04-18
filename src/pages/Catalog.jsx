@@ -83,14 +83,15 @@ const Catalog = () => {
     return (
         <div className="bg-white min-h-screen">
             <Helmet>
-                <title>Catalog - Shree Gopaldas Vallabhdas Jewellers</title>
-                <meta name="description" content="Explore our exquisite collection of Gold, Antique, and Diamond jewelry." />
+                <title>Jewellery Collections | Antique, Gold & Diamond Designs | SGV</title>
+                <meta name="description" content="Explore our exquisite collection of BIS Hallmarked gold, diamond, and antique bridal jewelry in Burhanpur. From traditional Rani Haar to modern bangles and rings." />
+                <meta name="keywords" content="Antique jewellery Burhanpur, gold bangle designs, traditional necklace collection, bridal jewellery Burhanpur, diamond rings Burhanpur, Rani Haar, Maang Tikka" />
                 
                 {/* Open Graph Tags */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://sgvjewellers.in/catalog" />
-                <meta property="og:title" content="Our Catalog | Exclusive Jewellery | SGV" />
-                <meta property="og:description" content="Certified gold, diamond, and antique jewelry collections." />
+                <meta property="og:title" content="Jewellery Collections | Exclusive Designs | SGV" />
+                <meta property="og:description" content="Certified gold, diamond, and antique jewelry collections in Burhanpur." />
                 <meta property="og:image" content="https://sgvjewellers.in/images/main/catalog/310x585_1.png" />
             </Helmet>
 

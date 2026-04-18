@@ -42,8 +42,9 @@ const Contact = () => {
     return (
         <div className="animate-fade-in bg-white">
             <Helmet>
-                <title>Contact & Orders - Shree Gopaldas Vallabhdas Jewellers</title>
-                <meta name="description" content="Place your orders or contact us for custom jewelry designs. Visit our showroom in Burhanpur." />
+                <title>Visit Us | SGV Jewellers Showroom in Burhanpur | Contact</title>
+                <meta name="description" content="Visit our premium jewellery showroom at Pandumal Chouraha, Burhanpur. Contact us for custom designs, certified gold rate inquiries, and wedding collections." />
+                <meta name="keywords" content="Jewellery showroom Burhanpur, SGV Jewellers address, contact jewellers Burhanpur, custom jewelry Burhanpur, Pandumal Chouraha gold shop" />
             </Helmet>
 
             {/* Hero Header */}
