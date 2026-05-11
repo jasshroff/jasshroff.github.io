@@ -5,8 +5,11 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Catalog from './pages/Catalog';
+import Careers from './pages/Careers';
+import JobApplication from './pages/JobApplication';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
+import HRDashboard from './pages/HRDashboard';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -22,6 +25,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="contact-us" element={<Contact />} />
+            <Route path="careers" element={<Careers />} />
+            <Route path="careers/apply" element={<JobApplication />} />
             
             {/* Redirects for legacy/shorter paths */}
             <Route path="about" element={<Navigate to="/about-us" replace />} />
@@ -33,6 +38,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admin/hr"
+              element={
+                <ProtectedRoute>
+                  <HRDashboard />
                 </ProtectedRoute>
               }
             />
