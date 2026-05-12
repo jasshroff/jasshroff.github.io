@@ -94,9 +94,10 @@ const Footer = () => {
                 <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                     <p>&copy; {currentYear} Shree Gopaldas Vallabhdas Jewellers. All Rights Reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-gold-600 transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-gold-600 transition-colors">Terms of Service</a>
-                        <a href="/login" className="hover:text-gold-600 transition-colors">Staff Login</a>
+                        <Link to="#" className="hover:text-gold-600 transition-colors">Privacy Policy</Link>
+                        <Link to="#" className="hover:text-gold-600 transition-colors">Terms of Service</Link>
+                        <Link to="/login" className="hover:text-gold-600 transition-colors">Staff Login</Link>
+                        <Link to="/admin/hr" className="hover:text-gold-600 transition-colors">HR Dashboard</Link>
                     </div>
                 </div>
             </div>
