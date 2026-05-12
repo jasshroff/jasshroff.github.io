@@ -140,7 +140,7 @@ const HRDashboard = () => {
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-serif font-bold text-dark-900">HR Dashboard</h1>
+            <h1 className="text-2xl font-serif font-bold text-maroon-950">HR Dashboard</h1>
             <p className="text-sm text-gray-500">Manage job applications • {currentUser?.email}</p>
           </div>
           <div className="flex gap-2">
@@ -219,7 +219,7 @@ const HRDashboard = () => {
                   return (
                     <tr key={app.id} className="hover:bg-gray-50 transition">
                       <td className="px-4 py-3">
-                        <p className="font-medium text-dark-900">{app.fullName}</p>
+                        <p className="font-medium text-maroon-950">{app.fullName}</p>
                         <p className="text-xs text-gray-500">{app.email}</p>
                         <p className="text-xs text-gray-400 md:hidden">{app.appliedRole}</p>
                       </td>
@@ -271,7 +271,7 @@ const HRDashboard = () => {
           <div className="bg-white rounded-lg shadow-2xl w-full max-w-2xl mb-10" onClick={e => e.stopPropagation()}>
             <div className="p-6 border-b border-gray-200 flex justify-between items-start">
               <div>
-                <h2 className="text-xl font-serif font-bold text-dark-900">{selectedApp.fullName}</h2>
+                <h2 className="text-xl font-serif font-bold text-maroon-950">{selectedApp.fullName}</h2>
                 <p className="text-sm text-gray-500">{selectedApp.appliedRole} • Applied {selectedApp.createdAt?.toDate ? selectedApp.createdAt.toDate().toLocaleDateString('en-IN') : 'N/A'}</p>
               </div>
               <button onClick={() => setSelectedApp(null)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">&times;</button>

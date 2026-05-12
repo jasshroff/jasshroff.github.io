@@ -20,8 +20,21 @@ export default {
           900: '#644415',
           950: '#3a2408',
         },
+        maroon: {
+          50: '#fdf3f5',
+          100: '#fbe5e9',
+          200: '#f6c5cf',
+          300: '#ef9ba9',
+          400: '#e3687e',
+          500: '#d23a56',
+          600: '#b8213e',
+          700: '#9b1730',
+          800: '#82162b',
+          900: '#5c0011', // Deep Royal Maroon
+          950: '#3a000a', // Ultra Dark Maroon
+        },
         dark: {
-          900: '#1a1a1a', // Dark background
+          900: '#1a1a1a', // Legacy Dark background
           800: '#2d2d2d',
         }
       },

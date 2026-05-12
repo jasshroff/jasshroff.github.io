@@ -88,7 +88,7 @@ const Contact = () => {
             </Helmet>
 
             {/* Hero Header */}
-            <div className="relative bg-dark-900 text-white py-20 text-center">
+            <div className="relative bg-maroon-950 text-white py-20 text-center">
                 <div className="relative z-10 container mx-auto px-4">
                     <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Contact & Orders</h1>
                     <p className="text-gray-300 max-w-2xl mx-auto">
@@ -101,7 +101,7 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-16">
                     {/* Contact Form */}
                     <div>
-                        <h2 className="text-3xl font-serif text-dark-900 mb-8">
+                        <h2 className="text-3xl font-serif text-maroon-950 mb-8">
                             {product ? `Inquire about ${product}` : 'Send us a Message'}
                         </h2>
                         <form ref={form} onSubmit={sendEmail} className="space-y-6">
@@ -145,14 +145,14 @@ const Contact = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-10">
-                        <h2 className="text-3xl font-serif text-dark-900 mb-8">Contact Information</h2>
+                        <h2 className="text-3xl font-serif text-maroon-950 mb-8">Contact Information</h2>
 
                         <div className="flex items-start space-x-6">
                             <div className="w-12 h-12 bg-gold-100 text-gold-600 flex items-center justify-center rounded-full flex-shrink-0">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold text-dark-900 mb-2">Our Location</h4>
+                                <h4 className="text-lg font-bold text-maroon-950 mb-2">Our Location</h4>
                                 <p className="text-gray-600 leading-relaxed">
                                     17, Shreenath Sadan,<br />
                                     Pandumal Chouraha, Tilak Marg Road,<br />
@@ -166,7 +166,7 @@ const Contact = () => {
                                 <Phone className="w-6 h-6" />
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold text-dark-900 mb-2">Phone Number</h4>
+                                <h4 className="text-lg font-bold text-maroon-950 mb-2">Phone Number</h4>
                                 <p className="text-gray-600">
                                     <a href="tel:+919179559000" className="hover:text-gold-600 transition-colors">+91 917-955-9000</a>
                                 </p>
@@ -178,7 +178,7 @@ const Contact = () => {
                                 <Mail className="w-6 h-6" />
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold text-dark-900 mb-2">Email Address</h4>
+                                <h4 className="text-lg font-bold text-maroon-950 mb-2">Email Address</h4>
                                 <p className="text-gray-600">
                                     <a href="mailto:sgvjewellers1938@gmail.com" className="hover:text-gold-600 transition-colors">sgvjewellers1938@gmail.com</a>
                                 </p>
@@ -190,7 +190,7 @@ const Contact = () => {
                                 <Clock className="w-6 h-6" />
                             </div>
                             <div>
-                                <h4 className="text-lg font-bold text-dark-900 mb-2">Opening Hours</h4>
+                                <h4 className="text-lg font-bold text-maroon-950 mb-2">Opening Hours</h4>
                                 <p className="text-gray-600">
                                     Mon - Sun: 10:00 AM - 9:00 PM
                                 </p>

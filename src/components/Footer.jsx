@@ -5,7 +5,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-dark-900 text-white pt-16 pb-8 border-t-4 border-gold-500">
+        <footer className="bg-maroon-950 text-white pt-16 pb-8 border-t-4 border-gold-500">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand Info */}
@@ -17,10 +17,10 @@ const Footer = () => {
                             Crafting timeless elegance since 1938. Shree Gopaldas Vallabhdas Jewellers offers an exquisite collection of certified gold, diamond, and antique jewelry.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all">
+                            <a href="#" className="w-10 h-10 rounded-full bg-maroon-900 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all">
                                 <Facebook className="w-5 h-5" />
                             </a>
-                            <a href="https://www.instagram.com/shreegopaldasvallabhdas?igsh=MTRrcGhjazNibmp6dg==" className="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all">
+                            <a href="https://www.instagram.com/shreegopaldasvallabhdas?igsh=MTRrcGhjazNibmp6dg==" className="w-10 h-10 rounded-full bg-maroon-900 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all">
                                 <Instagram className="w-5 h-5" />
                             </a>
                         </div>

@@ -127,7 +127,7 @@ const AdminDashboard = () => {
             </Helmet>
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-lg shadow-sm">
-                    <h1 className="text-3xl font-serif font-bold text-dark-900">Admin Dashboard</h1>
+                    <h1 className="text-3xl font-serif font-bold text-maroon-950">Admin Dashboard</h1>
                     <div className="flex items-center gap-4">
                         <span className="text-gray-600 hidden sm:inline">{currentUser?.email}</span>
                         <button

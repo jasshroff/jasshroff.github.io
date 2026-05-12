@@ -88,7 +88,7 @@ const Careers = () => {
             </Helmet>
 
             {/* ═══════════════════ HERO BANNER ═══════════════════ */}
-            <section className="relative bg-dark-900 overflow-hidden">
+            <section className="relative bg-maroon-950 overflow-hidden">
                 {/* Decorative gold pattern overlay */}
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -170,13 +170,13 @@ const Careers = () => {
                                 <Briefcase className="w-5 h-5 text-white" />
                             </div>
                             <div>
-                                <p className="font-serif font-bold text-dark-900 text-lg">Apply Through Our Website</p>
+                                <p className="font-serif font-bold text-maroon-950 text-lg">Apply Through Our Website</p>
                                 <p className="text-gray-600 text-sm">Submit your application online — fast, easy, and secure</p>
                             </div>
                         </div>
                         <a
                             href="#openings"
-                            className="flex items-center gap-2 bg-dark-900 text-gold-400 hover:bg-dark-800 px-6 py-3 font-medium uppercase tracking-wider text-sm transition-all"
+                            className="flex items-center gap-2 bg-maroon-950 text-gold-400 hover:bg-maroon-900 px-6 py-3 font-medium uppercase tracking-wider text-sm transition-all"
                         >
                             Apply Now <ArrowRight className="w-4 h-4" />
                         </a>
@@ -194,7 +194,7 @@ const Careers = () => {
                         className="text-center mb-16"
                     >
                         <span className="text-gold-500 uppercase tracking-[0.2em] text-sm font-medium">Why Choose Us</span>
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-900 mt-3 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-maroon-950 mt-3 mb-4">
                             Why Work With SGV Jewellers?
                         </h2>
                         <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
@@ -219,7 +219,7 @@ const Careers = () => {
                                 <div className="w-16 h-16 bg-gold-50 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300">
                                     <benefit.icon className="w-7 h-7" />
                                 </div>
-                                <h3 className="font-serif font-bold text-dark-900 text-lg mb-3">{benefit.title}</h3>
+                                <h3 className="font-serif font-bold text-maroon-950 text-lg mb-3">{benefit.title}</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed">{benefit.desc}</p>
                             </motion.div>
                         ))}
@@ -228,7 +228,7 @@ const Careers = () => {
             </section>
 
             {/* ═══════════════════ WALK-IN INTERVIEW ANNOUNCEMENT ═══════════════════ */}
-            <section className="py-16 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 relative overflow-hidden">
+            <section className="py-16 bg-gradient-to-br from-maroon-950 via-maroon-900 to-maroon-950 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-5">
                     <div className="absolute inset-0" style={{
                         backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212,170,30,0.1) 35px, rgba(212,170,30,0.1) 70px)`
@@ -286,7 +286,7 @@ const Careers = () => {
                         className="text-center mb-16"
                     >
                         <span className="text-gold-500 uppercase tracking-[0.2em] text-sm font-medium">Open Positions</span>
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-900 mt-3 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-maroon-950 mt-3 mb-4">
                             Current Openings
                         </h2>
                         <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
@@ -311,7 +311,7 @@ const Careers = () => {
                                 <div className="p-6 md:p-8">
                                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                                         <div className="flex-1">
-                                            <h3 className="text-xl md:text-2xl font-serif font-bold text-dark-900 mb-3">
+                                            <h3 className="text-xl md:text-2xl font-serif font-bold text-maroon-950 mb-3">
                                                 {job.title}
                                             </h3>
                                             <div className="flex flex-wrap gap-3 mb-4">
@@ -381,7 +381,7 @@ const Careers = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-dark-900 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-maroon-950 mb-4">
                             Don't See a Perfect Fit?
                         </h2>
                         <p className="text-gray-600 max-w-xl mx-auto mb-8">
@@ -389,7 +389,7 @@ const Careers = () => {
                         </p>
                         <Link
                             to="/careers/apply"
-                            className="inline-flex items-center gap-2 bg-dark-900 hover:bg-dark-800 text-gold-400 px-8 py-4 font-medium uppercase tracking-wider text-sm transition-all transform hover:-translate-y-0.5 shadow-lg"
+                            className="inline-flex items-center gap-2 bg-maroon-950 hover:bg-maroon-900 text-gold-400 px-8 py-4 font-medium uppercase tracking-wider text-sm transition-all transform hover:-translate-y-0.5 shadow-lg"
                         >
                             Submit General Application
                             <ArrowRight className="w-4 h-4" />

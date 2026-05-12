@@ -96,7 +96,7 @@ const Catalog = () => {
             </Helmet>
 
             {/* Hero Header */}
-            <div className="relative bg-dark-900 text-white py-24 text-center overflow-hidden">
+            <div className="relative bg-maroon-950 text-white py-24 text-center overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 0.1, scale: 1 }}
@@ -176,7 +176,7 @@ const Catalog = () => {
                                     />
                                     
                                     {/* Glassmorphism Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/90 via-maroon-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
                                         <motion.div
                                             className="space-y-4"
                                         >
@@ -198,7 +198,7 @@ const Catalog = () => {
                                     </div>
                                     
                                     {/* Static Category Badge */}
-                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-dark-900 shadow-sm transition-opacity duration-300 group-hover:opacity-0">
+                                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-maroon-950 shadow-sm transition-opacity duration-300 group-hover:opacity-0">
                                         {product.category}
                                     </div>
                                 </div>

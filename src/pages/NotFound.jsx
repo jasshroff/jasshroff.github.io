@@ -10,7 +10,7 @@ const NotFound = () => {
             </Helmet>
 
             <h1 className="text-9xl font-serif font-bold text-gold-200">404</h1>
-            <h2 className="text-3xl md:text-4xl font-serif text-dark-900 mb-6 mt-[-2rem]">Page Not Found</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-maroon-950 mb-6 mt-[-2rem]">Page Not Found</h2>
             <p className="text-gray-600 mb-8 max-w-md">
                 The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
             </p>

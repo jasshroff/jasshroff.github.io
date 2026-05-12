@@ -23,7 +23,7 @@ export const CollectionGrid = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <span className="text-gold-600 font-medium tracking-widest uppercase text-sm">Discover</span>
-                    <h2 className="text-4xl font-serif text-dark-900 mt-2">Our Collections</h2>
+                    <h2 className="text-4xl font-serif text-maroon-950 mt-2">Our Collections</h2>
                     <div className="w-24 h-1 bg-gold-500 mx-auto mt-4"></div>
                 </div>
 
@@ -47,7 +47,7 @@ export const CollectionGrid = () => {
                                 </div>
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                                     <div className="bg-white/90 px-8 py-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                        <h3 className="text-dark-900 font-serif font-bold text-xl uppercase tracking-wide">{item.title}</h3>
+                                        <h3 className="text-maroon-950 font-serif font-bold text-xl uppercase tracking-wide">{item.title}</h3>
                                     </div>
                                 </div>
                             </Link>
@@ -73,7 +73,7 @@ export const BestSellers = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <span className="text-gold-600 font-medium tracking-widest uppercase text-sm">Shop</span>
-                    <h2 className="text-4xl font-serif text-dark-900 mt-2">Best Sellers</h2>
+                    <h2 className="text-4xl font-serif text-maroon-950 mt-2">Best Sellers</h2>
                     <div className="w-24 h-1 bg-gold-500 mx-auto mt-4"></div>
                 </div>
 
@@ -99,7 +99,7 @@ export const BestSellers = () => {
                                     className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                                 />
                                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-2">
-                                    <Link to="/catalog" className="bg-white text-dark-900 px-4 py-2 text-sm font-medium hover:bg-gold-500 hover:text-white transition-colors shadow-lg uppercase tracking-wider">
+                                    <Link to="/catalog" className="bg-white text-maroon-950 px-4 py-2 text-sm font-medium hover:bg-gold-500 hover:text-white transition-colors shadow-lg uppercase tracking-wider">
                                         View
                                     </Link>
                                 </div>
@@ -111,7 +111,7 @@ export const BestSellers = () => {
                                         <Star key={i} className={`w-4 h-4 ${i < product.rating ? 'fill-current text-gold-500' : 'text-gray-300'}`} />
                                     ))}
                                 </div>
-                                <h3 className="text-lg font-serif font-semibold text-dark-900 mb-2">{product.title}</h3>
+                                <h3 className="text-lg font-serif font-semibold text-maroon-950 mb-2">{product.title}</h3>
                             </div>
                         </motion.div>
                     ))}
@@ -172,7 +172,7 @@ export const Testimonials = () => {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <span className="text-gold-600 font-medium tracking-widest uppercase text-sm">Testimonials</span>
-                    <h2 className="text-4xl font-serif text-dark-900 mt-2">What People Say</h2>
+                    <h2 className="text-4xl font-serif text-maroon-950 mt-2">What People Say</h2>
                     <div className="w-24 h-1 bg-gold-500 mx-auto mt-4"></div>
                 </div>
 
@@ -215,7 +215,7 @@ export const Testimonials = () => {
                                     {item.quote}
                                 </p>
                                 <div>
-                                    <h4 className="font-serif font-bold text-dark-900 text-lg">{item.name}</h4>
+                                    <h4 className="font-serif font-bold text-maroon-950 text-lg">{item.name}</h4>
                                     <span className="text-gold-600 text-sm uppercase tracking-wider">{item.role}</span>
                                 </div>
                             </motion.div>
@@ -239,7 +239,7 @@ export const Features = () => {
     ];
 
     return (
-        <section className="py-20 bg-dark-900 text-white border-t border-gold-900/30">
+        <section className="py-20 bg-maroon-950 text-white border-t border-gold-900/30">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
                     {features.map((feature, index) => (
@@ -251,7 +251,7 @@ export const Features = () => {
                             viewport={{ once: true }}
                             className="text-center group"
                         >
-                            <div className="w-16 h-16 mx-auto mb-6 bg-dark-800 rounded-full flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-lg px-2">
+                            <div className="w-16 h-16 mx-auto mb-6 bg-maroon-900 rounded-full flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-lg px-2">
                                 {feature.icon}
                             </div>
                             <h4 className="font-serif font-bold text-lg mb-3 group-hover:text-gold-400 transition-colors">{feature.title}</h4>

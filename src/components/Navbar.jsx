@@ -36,7 +36,7 @@ const Navbar = () => {
     return (
         <>
             {/* Top Bar - Contact Info (Hidden on small screens) */}
-            <div className="bg-dark-900 text-gold-200 py-2 px-4 hidden md:block text-sm border-b border-gold-900/20">
+            <div className="bg-maroon-950 text-gold-200 py-2 px-4 hidden md:block text-sm border-b border-gold-900/20">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center space-x-6">
                         <a href="tel:+919179559000" className="flex items-center hover:text-white transition-colors">
@@ -70,7 +70,7 @@ const Navbar = () => {
                                 className={`transition-all duration-300 object-contain ${scrolled ? 'h-16 scale-110' : 'h-28 scale-110'}`}
                             />
                             <div className="ml-3 hidden lg:block">
-                                <h1 className="text-lg lg:text-xl font-serif font-bold text-dark-900 tracking-wide group-hover:text-gold-600 transition-colors uppercase">
+                                <h1 className="text-lg lg:text-xl font-serif font-bold text-maroon-950 tracking-wide group-hover:text-gold-600 transition-colors uppercase">
                                     Shree Gopaldas Vallabhdas Jewellers
                                 </h1>
                             </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className={`relative font-medium text-sm uppercase tracking-wider transition-colors hover:text-gold-600 ${location.pathname === link.path ? 'text-gold-600' : 'text-dark-800'
+                                    className={`relative font-medium text-sm uppercase tracking-wider transition-colors hover:text-gold-600 ${location.pathname === link.path ? 'text-gold-600' : 'text-maroon-900'
                                         }`}
                                 >
                                     {link.name}
@@ -106,7 +106,7 @@ const Navbar = () => {
                                 <div className="relative">
                                     <button
                                         onClick={() => setProfileOpen(!profileOpen)}
-                                        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gold-50 text-dark-800 hover:text-gold-600 transition-colors focus:outline-none border border-gray-200"
+                                        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gold-50 text-maroon-900 hover:text-gold-600 transition-colors focus:outline-none border border-gray-200"
                                     >
                                         {currentUser.photoURL ? (
                                             <img src={currentUser.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
@@ -151,7 +151,7 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="md:hidden text-dark-800 hover:text-gold-600 focus:outline-none"
+                            className="md:hidden text-maroon-900 hover:text-gold-600 focus:outline-none"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
@@ -172,7 +172,7 @@ const Navbar = () => {
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`block py-2 text-base font-medium border-b border-gray-100 ${location.pathname === link.path ? 'text-gold-600' : 'text-dark-800'
+                                        className={`block py-2 text-base font-medium border-b border-gray-100 ${location.pathname === link.path ? 'text-gold-600' : 'text-maroon-900'
                                             }`}
                                     >
                                         {link.name}
@@ -192,7 +192,7 @@ const Navbar = () => {
                                         </div>
                                         <Link
                                             to="/profile"
-                                            className="flex items-center py-2 px-2 text-base font-medium text-dark-800 hover:text-gold-600 transition-colors"
+                                            className="flex items-center py-2 px-2 text-base font-medium text-maroon-900 hover:text-gold-600 transition-colors"
                                         >
                                             <LayoutDashboard className="w-5 h-5 mr-3 text-gold-500" />
                                             My Profile & Apps

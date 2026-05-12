@@ -89,14 +89,14 @@ const UserProfile = () => {
                         )}
                     </div>
                     <div className="flex-grow text-center md:text-left">
-                        <h1 className="text-3xl font-serif font-bold text-dark-900 mb-2">
+                        <h1 className="text-3xl font-serif font-bold text-maroon-950 mb-2">
                             {currentUser.displayName || 'My Profile'}
                         </h1>
                         <p className="text-gray-500">{currentUser.email}</p>
                     </div>
                     <button
                         onClick={logout}
-                        className="px-6 py-2.5 border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-dark-900 transition-colors rounded-lg font-medium"
+                        className="px-6 py-2.5 border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-maroon-950 transition-colors rounded-lg font-medium"
                     >
                         Sign Out
                     </button>
@@ -104,7 +104,7 @@ const UserProfile = () => {
 
                 {/* Applications Section */}
                 <div className="space-y-6">
-                    <h2 className="text-2xl font-serif font-bold text-dark-900 flex items-center gap-3">
+                    <h2 className="text-2xl font-serif font-bold text-maroon-950 flex items-center gap-3">
                         <Briefcase className="w-6 h-6 text-gold-500" />
                         My Job Applications
                     </h2>
@@ -137,7 +137,7 @@ const UserProfile = () => {
                                     <div className="p-6 md:p-8">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                                             <div>
-                                                <h3 className="text-xl font-bold text-dark-900 mb-1">
+                                                <h3 className="text-xl font-bold text-maroon-950 mb-1">
                                                     {app.appliedRole || 'General Application'}
                                                 </h3>
                                                 <p className="text-sm text-gray-500">
