@@ -10,6 +10,7 @@ import JobApplication from './pages/JobApplication';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import HRDashboard from './pages/HRDashboard';
+import UserProfile from './pages/UserProfile';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -33,6 +34,14 @@ function App() {
             <Route path="contact" element={<Navigate to="/contact-us" replace />} />
             <Route path="catalog" element={<Catalog />} />
             <Route path="login" element={<Login />} />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="admin"
               element={

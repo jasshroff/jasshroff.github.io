@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [profileOpen, setProfileOpen] = useState(false);
     const location = useLocation();
+    const { currentUser, logout } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,9 +19,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
+    // Close menus on route change
     useEffect(() => {
         setIsOpen(false);
+        setProfileOpen(false);
     }, [location]);
 
     const navLinks = [
@@ -96,6 +100,52 @@ const Navbar = () => {
                             >
                                 Shop Now
                             </Link>
+
+                            {/* User Profile Dropdown */}
+                            {currentUser && (
+                                <div className="relative">
+                                    <button
+                                        onClick={() => setProfileOpen(!profileOpen)}
+                                        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gold-50 text-dark-800 hover:text-gold-600 transition-colors focus:outline-none border border-gray-200"
+                                    >
+                                        {currentUser.photoURL ? (
+                                            <img src={currentUser.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
+                                        ) : (
+                                            <User className="w-5 h-5" />
+                                        )}
+                                    </button>
+                                    
+                                    <AnimatePresence>
+                                        {profileOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 10 }}
+                                                className="absolute right-0 mt-3 w-56 bg-white border border-gray-100 shadow-xl rounded-lg overflow-hidden py-2"
+                                            >
+                                                <div className="px-4 py-3 border-b border-gray-50 mb-2">
+                                                    <p className="text-sm font-medium text-gray-900 truncate">{currentUser.displayName || 'User'}</p>
+                                                    <p className="text-xs text-gray-500 truncate">{currentUser.email}</p>
+                                                </div>
+                                                <Link 
+                                                    to="/profile" 
+                                                    className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gold-50 hover:text-gold-700 transition-colors"
+                                                >
+                                                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                                                    My Profile & Apps
+                                                </Link>
+                                                <button 
+                                                    onClick={logout}
+                                                    className="flex items-center w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                                                >
+                                                    <LogOut className="w-4 h-4 mr-2" />
+                                                    Sign Out
+                                                </button>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )}
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -134,6 +184,28 @@ const Navbar = () => {
                                 >
                                     Shop Now
                                 </Link>
+                                {currentUser && (
+                                    <div className="pt-4 mt-2 border-t border-gray-100 flex flex-col space-y-2">
+                                        <div className="px-2 mb-2">
+                                            <p className="text-sm font-medium text-gray-900">{currentUser.displayName || 'User'}</p>
+                                            <p className="text-xs text-gray-500">{currentUser.email}</p>
+                                        </div>
+                                        <Link
+                                            to="/profile"
+                                            className="flex items-center py-2 px-2 text-base font-medium text-dark-800 hover:text-gold-600 transition-colors"
+                                        >
+                                            <LayoutDashboard className="w-5 h-5 mr-3 text-gold-500" />
+                                            My Profile & Apps
+                                        </Link>
+                                        <button
+                                            onClick={logout}
+                                            className="flex items-center py-2 px-2 text-base font-medium text-red-600 hover:text-red-700 transition-colors text-left"
+                                        >
+                                            <LogOut className="w-5 h-5 mr-3" />
+                                            Sign Out
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </motion.div>
                     )
