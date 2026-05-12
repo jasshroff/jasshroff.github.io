@@ -239,24 +239,26 @@ export const Features = () => {
     ];
 
     return (
-        <section className="py-20 bg-maroon-950 text-white border-t border-gold-900/30">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
-                    {features.map((feature, index) => (
-                        <motion.div
+        <section className="py-20 bg-maroon-950 text-white border-t border-gold-900/30 overflow-hidden">
+            <div className="w-full relative">
+                {/* Fade gradient edges for smooth transition */}
+                <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-maroon-950 to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-maroon-950 to-transparent z-10 pointer-events-none"></div>
+
+                {/* Animated Marquee Track */}
+                <div className="flex w-[200%] animate-marquee">
+                    {/* Double the array for seamless infinite scrolling */}
+                    {[...features, ...features].map((feature, index) => (
+                        <div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4, delay: index * 0.05 }}
-                            viewport={{ once: true }}
-                            className="text-center group"
+                            className="flex-shrink-0 w-64 md:w-80 px-6 text-center group"
                         >
                             <div className="w-16 h-16 mx-auto mb-6 bg-maroon-900 rounded-full flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300 shadow-lg px-2">
                                 {feature.icon}
                             </div>
                             <h4 className="font-serif font-bold text-lg mb-3 group-hover:text-gold-400 transition-colors">{feature.title}</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

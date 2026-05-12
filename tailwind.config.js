@@ -41,6 +41,15 @@ export default {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
         serif: ['Playfair Display', 'serif'], // For headings
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
       }
     },
   },
