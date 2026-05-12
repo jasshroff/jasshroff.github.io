@@ -11,7 +11,7 @@ const Footer = () => {
                     {/* Brand Info */}
                     <div className="space-y-6">
                         <Link to="/" className="block">
-                            <img src="/images/main/sgv.png" alt="Shree Gopaldas Vallabhdas Jewellers" className="h-16 brightness-100 opacity-100" />
+                            <img src="/images/main/sgv.png" alt="Shree Gopaldas Vallabhdas Jewellers" className="h-32 w-auto object-contain brightness-100 opacity-100 transform hover:scale-105 transition-transform" />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Crafting timeless elegance since 1938. Shree Gopaldas Vallabhdas Jewellers offers an exquisite collection of certified gold, diamond, and antique jewelry.

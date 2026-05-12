@@ -67,7 +67,7 @@ const Navbar = () => {
                             <img
                                 src="/images/main/sgv.png"
                                 alt="Shree Gopaldas Vallabhdas Jewellers"
-                                className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14'}`}
+                                className={`transition-all duration-300 object-contain ${scrolled ? 'h-16 scale-110' : 'h-28 scale-110'}`}
                             />
                             <div className="ml-3 hidden lg:block">
                                 <h1 className="text-lg lg:text-xl font-serif font-bold text-dark-900 tracking-wide group-hover:text-gold-600 transition-colors uppercase">
