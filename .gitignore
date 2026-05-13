@@ -12,6 +12,10 @@ protobuf.js log*
 node_modules
 dist
 dist-ssr
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 
 # Local env files
 .env
