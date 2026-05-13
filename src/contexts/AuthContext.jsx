@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../firebase';
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, getIdTokenResult } from 'firebase/auth';
 
 const AuthContext = createContext();
 
@@ -10,11 +10,23 @@ const googleProvider = new GoogleAuthProvider();
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [authClaims, setAuthClaims] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             setCurrentUser(user);
+            if (user) {
+                try {
+                    const token = await getIdTokenResult(user, true);
+                    setAuthClaims(token.claims || {});
+                } catch (error) {
+                    console.error('Failed to load auth claims:', error);
+                    setAuthClaims({});
+                }
+            } else {
+                setAuthClaims({});
+            }
             setLoading(false);
         });
 
@@ -33,11 +45,24 @@ export const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
+    const refreshAuthClaims = async () => {
+        if (!auth.currentUser) {
+            setAuthClaims({});
+            return {};
+        }
+
+        const token = await getIdTokenResult(auth.currentUser, true);
+        setAuthClaims(token.claims || {});
+        return token.claims || {};
+    };
+
     const value = {
         currentUser,
+        authClaims,
         login,
         googleSignIn,
-        logout
+        logout,
+        refreshAuthClaims
     };
 
     return (
@@ -46,4 +71,3 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
-

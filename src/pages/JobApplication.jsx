@@ -187,23 +187,25 @@ const JobApplication = () => {
     try {
       const timestamp = Date.now();
       const safeName = formData.fullName.replace(/\s+/g, '_').toLowerCase();
+      const uploadBasePath = `applications/${currentUser.uid}/${timestamp}`;
 
       setUploadProgress('Uploading resume...');
-      const resumeUrl = await uploadFile(files.resume, `applications/${safeName}_${timestamp}/resume_${files.resume.name}`);
+      const resumeUrl = await uploadFile(files.resume, `${uploadBasePath}/resume_${safeName}_${files.resume.name}`);
 
       setUploadProgress('Uploading Aadhar (front)...');
-      const aadharFrontUrl = await uploadFile(files.aadharFront, `applications/${safeName}_${timestamp}/aadhar_front_${files.aadharFront.name}`);
+      const aadharFrontUrl = await uploadFile(files.aadharFront, `${uploadBasePath}/aadhar_front_${safeName}_${files.aadharFront.name}`);
 
       setUploadProgress('Uploading Aadhar (back)...');
-      const aadharBackUrl = await uploadFile(files.aadharBack, `applications/${safeName}_${timestamp}/aadhar_back_${files.aadharBack.name}`);
+      const aadharBackUrl = await uploadFile(files.aadharBack, `${uploadBasePath}/aadhar_back_${safeName}_${files.aadharBack.name}`);
 
       setUploadProgress('Uploading photo...');
-      const photoUrl = await uploadFile(files.photo, `applications/${safeName}_${timestamp}/photo_${files.photo.name}`);
+      const photoUrl = await uploadFile(files.photo, `${uploadBasePath}/photo_${safeName}_${files.photo.name}`);
 
       setUploadProgress('Saving application...');
       await addDoc(collection(db, 'jobApplications'), {
         ...formData,
         resumeUrl, aadharFrontUrl, aadharBackUrl, photoUrl,
+        applicantUid: currentUser.uid,
         status: 'Pending',
         adminNotes: '',
         consent: true,

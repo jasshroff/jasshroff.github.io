@@ -1,0 +1,48 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function hasRole(role) {
+      return signedIn()
+        && (
+          request.auth.token[role] == true
+          || request.auth.token.role == role
+          || (request.auth.token.roles != null && role in request.auth.token.roles)
+        );
+    }
+
+    function isStaff() {
+      return hasRole('staff') || hasRole('admin');
+    }
+
+    function isHr() {
+      return hasRole('hr') || hasRole('admin');
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    match /jobApplications/{applicationId} {
+      allow create: if signedIn()
+        && request.resource.data.applicantUid == request.auth.uid
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.status == 'Pending';
+
+      allow read: if isHr()
+        || (signedIn() && resource.data.applicantUid == request.auth.uid);
+
+      allow update: if isHr();
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

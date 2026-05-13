@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+protobuf
+protobuf.js log*
 
 node_modules
 dist
@@ -29,3 +31,6 @@ dist-ssr
 *.firebase
 *index.html
 *firebase.js    
+*firebase.js.map
+*sitemap.xml
+*.DS_Store

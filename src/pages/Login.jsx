@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { getIdTokenResult } from 'firebase/auth';
+import { hasAnyRole, hasStaffAccess } from '../utils/authClaims';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
+    const { login, logout, refreshAuthClaims } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -16,8 +18,17 @@ const Login = () => {
         try {
             setError('');
             setLoading(true);
-            await login(email, password);
-            navigate('/admin');
+            const credential = await login(email, password);
+            const token = await getIdTokenResult(credential.user, true);
+
+            if (!hasStaffAccess(token.claims)) {
+                await logout();
+                setError('This login is only for authorized staff. Job applicants can use the careers application page.');
+                return;
+            }
+
+            await refreshAuthClaims();
+            navigate(hasAnyRole(token.claims, ['hr']) ? '/admin/hr' : '/admin');
         } catch (err) {
             setError('Failed to log in: ' + err.message);
         }
