@@ -73,9 +73,10 @@ const About = () => {
                             </p>
                         </div>
                         <div className="bg-white p-8 shadow-lg border-t-4 border-gold-500 hover:-translate-y-2 transition-transform">
-                            <h3 className="text-xl font-serif font-bold mb-4 text-maroon-950">Innovation & Tradition</h3>
+                            <h3 className="text-xl font-serif font-bold mb-4 text-maroon-950">Craftsmanship</h3>
                             <p className="text-gray-600">
-                                With over 85 years of heritage, we honor our traditions while embracing innovation to create unique, timeless pieces.
+                                The legacy of Shree Gopaldas Vallabhdas Jewellers is defined by the craftsmanship and dedication of our family.
+                                Each piece tells a story of quality, tradition, and the trust that has been built over generations.
                             </p>
                         </div>
                     </div>
@@ -85,7 +86,7 @@ const About = () => {
             {/* Team Section */}
             <section className="py-20 container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-serif text-maroon-950">Meet Our Team</h2>
+                    <h2 className="text-3xl font-serif text-maroon-950">The Family Behind 85+ Years of Trust</h2>
                     <div className="w-24 h-1 bg-gold-500 mx-auto mt-4"></div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
