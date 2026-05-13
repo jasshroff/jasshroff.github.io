@@ -15,8 +15,12 @@ service firebase.storage {
         );
     }
 
+    function isPrimaryAdminEmail() {
+      return signedIn() && request.auth.token.email == 'sgvjewellers1938@gmail.com';
+    }
+
     function isHr() {
-      return hasRole('hr') || hasRole('admin');
+      return isPrimaryAdminEmail() || hasRole('hr') || hasRole('admin');
     }
 
     match /applications/{applicantUid}/{timestamp}/{fileName} {

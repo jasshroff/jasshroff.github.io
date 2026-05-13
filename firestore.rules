@@ -15,12 +15,16 @@ service cloud.firestore {
         );
     }
 
+    function isPrimaryAdminEmail() {
+      return signedIn() && request.auth.token.email == 'sgvjewellers1938@gmail.com';
+    }
+
     function isStaff() {
-      return hasRole('staff') || hasRole('admin');
+      return isPrimaryAdminEmail() || hasRole('staff') || hasRole('admin');
     }
 
     function isHr() {
-      return hasRole('hr') || hasRole('admin');
+      return isPrimaryAdminEmail() || hasRole('hr') || hasRole('admin');
     }
 
     match /products/{productId} {

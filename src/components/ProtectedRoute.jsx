@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { hasAnyRole } from '../utils/authClaims';
+import { hasAnyRole, isPrimaryAdminEmail } from '../utils/authClaims';
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     const { currentUser, authClaims } = useAuth();
@@ -9,7 +9,11 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
         return <Navigate to="/login" />;
     }
 
-    if (allowedRoles.length > 0 && !hasAnyRole(authClaims, allowedRoles)) {
+    if (
+        allowedRoles.length > 0 &&
+        !isPrimaryAdminEmail(currentUser?.email) &&
+        !hasAnyRole(authClaims, allowedRoles)
+    ) {
         return <Navigate to="/profile" replace />;
     }
 

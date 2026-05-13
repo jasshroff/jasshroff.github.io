@@ -3,7 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { getIdTokenResult } from 'firebase/auth';
-import { hasAnyRole, hasStaffAccess } from '../utils/authClaims';
+import { hasAnyRole, hasStaffAccess, isPrimaryAdminEmail } from '../utils/authClaims';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -18,17 +18,24 @@ const Login = () => {
         try {
             setError('');
             setLoading(true);
+
+            if (!isPrimaryAdminEmail(email)) {
+                setError('Only the authorized SGV admin account can sign in here.');
+                setLoading(false);
+                return;
+            }
+
             const credential = await login(email, password);
             const token = await getIdTokenResult(credential.user, true);
 
-            if (!hasStaffAccess(token.claims)) {
+            if (!hasStaffAccess(token.claims, credential.user.email)) {
                 await logout();
                 setError('This login is only for authorized staff. Job applicants can use the careers application page.');
                 return;
             }
 
             await refreshAuthClaims();
-            navigate(hasAnyRole(token.claims, ['hr']) ? '/admin/hr' : '/admin');
+            navigate(isPrimaryAdminEmail(credential.user.email) || hasAnyRole(token.claims, ['hr']) ? '/admin/hr' : '/admin');
         } catch (err) {
             setError('Failed to log in: ' + err.message);
         }

@@ -1,8 +1,12 @@
+export const ADMIN_EMAIL = 'sgvjewellers1938@gmail.com';
+
 const ROLE_ALIASES = {
     admin: ['admin'],
     staff: ['staff', 'admin'],
     hr: ['hr', 'admin'],
 };
+
+export const isPrimaryAdminEmail = (email = '') => email.toLowerCase() === ADMIN_EMAIL;
 
 export const getClaimRoles = (claims = {}) => {
     const roles = new Set();
@@ -33,4 +37,7 @@ export const hasAnyRole = (claims = {}, allowedRoles = []) => {
     });
 };
 
-export const hasStaffAccess = (claims = {}) => hasAnyRole(claims, ['staff', 'hr', 'admin']);
+export const hasStaffAccess = (claims = {}, email = '') => {
+    if (isPrimaryAdminEmail(email)) return true;
+    return hasAnyRole(claims, ['staff', 'hr', 'admin']);
+};
