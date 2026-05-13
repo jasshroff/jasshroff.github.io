@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -117,6 +117,16 @@ const JobApplication = () => {
   const [errorMsg, setErrorMsg] = useState('');
   const [uploadProgress, setUploadProgress] = useState('');
 
+  useEffect(() => {
+    if (!currentUser?.email) return;
+
+    setFormData(prev => ({
+      ...prev,
+      email: currentUser.email,
+      fullName: prev.fullName || currentUser.displayName || '',
+    }));
+  }, [currentUser]);
+
   // Auto-fill email from Google account
   const handleGoogleSignIn = async () => {
     setSigningIn(true);
@@ -204,6 +214,7 @@ const JobApplication = () => {
       setUploadProgress('Saving application...');
       await addDoc(collection(db, 'jobApplications'), {
         ...formData,
+        email: currentUser.email,
         resumeUrl, aadharFrontUrl, aadharBackUrl, photoUrl,
         applicantUid: currentUser.uid,
         status: 'Pending',
@@ -368,7 +379,7 @@ const JobApplication = () => {
               <Input label="Mobile Number" required name="mobile" type="tel" value={formData.mobile} onChange={handleChange} placeholder="+91" pattern="[0-9]{10}" title="Enter 10 digit mobile number" />
               <Input label="WhatsApp Number" name="whatsapp" type="tel" value={formData.whatsapp} onChange={handleChange} placeholder="+91 (if different)" />
               <div className="md:col-span-2">
-                <Input label="Email Address" required name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your.email@example.com" />
+                <Input label="Email Address" required name="email" type="email" value={formData.email} onChange={handleChange} readOnly={Boolean(currentUser?.email)} placeholder="your.email@example.com" />
               </div>
             </div>
           </div>
