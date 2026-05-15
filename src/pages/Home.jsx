@@ -45,9 +45,10 @@ const Home = () => {
                       "opens": "10:00",
                       "closes": "21:00"
                     }
-                  ]
+                  ],
                   "sameAs": [
-                    "https://www.instagram.com/shreegopaldasvallabhdas"
+                    "https://www.instagram.com/shreegopaldasvallabhdas",
+                    "https://www.facebook.com/shreegopaldasvallabhdas"
                   ]
                 }
                 `}
