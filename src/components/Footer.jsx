@@ -14,7 +14,7 @@ const Footer = () => {
                             <img src="/images/main/sgv.png" alt="Shree Gopaldas Vallabhdas Jewellers" className="h-32 w-auto object-contain brightness-100 opacity-100 transform hover:scale-105 transition-transform" />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Crafting timeless elegance since 1938. Shree Gopaldas Vallabhdas Jewellers offers an exquisite collection of certified gold, diamond, and antique jewelry.
+                            Welcome to Shree Gopaldas Vallabhdas Jewellers, where legacy meets luxury. With a rich heritage dating back to 1938, we have been crafting exceptional gold, diamond, and antique jewellery that stands the test of time.
                         </p>
                         <div className="flex space-x-4">
                             <a href="#" className="w-10 h-10 rounded-full bg-maroon-900 flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all">
