@@ -1,4 +1,5 @@
 export const ADMIN_EMAIL = 'sgvjewellers1938@gmail.com';
+export const STAFF_EMAIL = 'staffsgvjewellers@gmail.com';
 
 const ROLE_ALIASES = {
     admin: ['admin'],
@@ -7,6 +8,7 @@ const ROLE_ALIASES = {
 };
 
 export const isPrimaryAdminEmail = (email = '') => email.toLowerCase() === ADMIN_EMAIL;
+export const isPrimaryStaffEmail = (email = '') => email.toLowerCase() === STAFF_EMAIL;
 
 export const getClaimRoles = (claims = {}) => {
     const roles = new Set();
@@ -28,7 +30,10 @@ export const getClaimRoles = (claims = {}) => {
     return roles;
 };
 
-export const hasAnyRole = (claims = {}, allowedRoles = []) => {
+export const hasAnyRole = (claims = {}, allowedRoles = [], email = '') => {
+    if (isPrimaryAdminEmail(email)) return true;
+    if (isPrimaryStaffEmail(email) && allowedRoles.includes('staff')) return true;
+
     const userRoles = getClaimRoles(claims);
 
     return allowedRoles.some((role) => {
@@ -38,6 +43,6 @@ export const hasAnyRole = (claims = {}, allowedRoles = []) => {
 };
 
 export const hasStaffAccess = (claims = {}, email = '') => {
-    if (isPrimaryAdminEmail(email)) return true;
-    return hasAnyRole(claims, ['staff', 'hr', 'admin']);
+    if (isPrimaryAdminEmail(email) || isPrimaryStaffEmail(email)) return true;
+    return hasAnyRole(claims, ['staff', 'hr', 'admin'], email);
 };

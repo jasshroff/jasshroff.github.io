@@ -167,7 +167,7 @@ const HRDashboard = () => {
             </div>
             
             <div className="flex items-center gap-2 border-l border-gray-200 pl-4">
-              {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['staff', 'admin'])) && (
+              {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['staff', 'admin'], currentUser?.email)) && (
                 <Link to="/admin" className="flex items-center gap-1.5 px-3 py-2 text-sm bg-gold-50 text-gold-700 rounded hover:bg-gold-100 transition border border-gold-200 font-medium">
                   Inventory Dashboard
                 </Link>

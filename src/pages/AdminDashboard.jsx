@@ -131,7 +131,7 @@ const AdminDashboard = () => {
                     <h1 className="text-3xl font-serif font-bold text-maroon-950">Admin Dashboard</h1>
                     <div className="flex items-center gap-4">
                         <span className="text-gray-600 hidden sm:inline">{currentUser?.email}</span>
-                        {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['hr'])) && (
+                        {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['hr'], currentUser?.email)) && (
                             <Link
                                 to="/admin/hr"
                                 className="flex items-center gap-2 px-4 py-2 bg-gold-50 text-gold-700 rounded hover:bg-gold-100 transition border border-gold-200 text-sm font-medium"
