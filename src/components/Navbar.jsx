@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -64,7 +65,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center">
                         {/* Logo */}
                         <Link to="/" className="flex items-center group">
-                            <img
+                            <OptimizedImage
                                 src="/images/main/sgv.png"
                                 alt="Shree Gopaldas Vallabhdas Jewellers"
                                 className={`transition-all duration-300 object-contain ${scrolled ? 'h-16 scale-110' : 'h-28 scale-110'}`}
@@ -109,7 +110,7 @@ const Navbar = () => {
                                         className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gold-50 text-maroon-900 hover:text-gold-600 transition-colors focus:outline-none border border-gray-200"
                                     >
                                         {currentUser.photoURL ? (
-                                            <img src={currentUser.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
+                                            <OptimizedImage src={currentUser.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" />
                                         ) : (
                                             <User className="w-5 h-5" />
                                         )}

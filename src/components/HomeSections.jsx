@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Star, ShieldCheck, RefreshCw, Truck, Award, Gem } from 'lucide-react';
@@ -39,11 +39,7 @@ export const CollectionGrid = () => {
                         >
                             <Link to={item.link} className="block overflow-hidden relative shadow-lg">
                                 <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                                    <img
-                                        src={item.image}
-                                        alt={`SGV Jewellers ${item.title} Collection Burhanpur`}
-                                        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                                    />
+                        <OptimizedImage src={item.image} alt={`SGV Jewellers ${item.title} Collection Burhanpur`} className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                                 </div>
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                                     <div className="bg-white/90 px-8 py-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
@@ -93,11 +89,7 @@ export const BestSellers = () => {
                                 </span>
                             )}
                             <div className="relative overflow-hidden mb-4 bg-gray-100 aspect-square flex items-center justify-center">
-                                <img
-                                    src={product.image}
-                                    alt={`Best Seller ${product.title} - SGV Jewellers Burhanpur`}
-                                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                                />
+                                <OptimizedImage src={product.image} alt={`Best Seller ${product.title} - SGV Jewellers Burhanpur`} className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-2">
                                     <Link to="/catalog" className="bg-white text-maroon-950 px-4 py-2 text-sm font-medium hover:bg-gold-500 hover:text-white transition-colors shadow-lg uppercase tracking-wider">
                                         View

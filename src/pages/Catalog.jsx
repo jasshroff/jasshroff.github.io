@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
@@ -169,11 +169,7 @@ const Catalog = () => {
                 `}
                             >
                                 <div className="relative aspect-[4/5] sm:aspect-auto sm:h-full w-full min-h-[350px] overflow-hidden bg-gray-100">
-                                    <img
-                                        src={product.image}
-                                        alt={product.title}
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                                    />
+                                    <OptimizedImage src={product.image} alt={product.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
                                     
                                     {/* Glassmorphism Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/90 via-maroon-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">

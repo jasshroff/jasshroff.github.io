@@ -83,7 +83,7 @@ const UserProfile = () => {
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8 flex flex-col md:flex-row items-center gap-6">
                     <div className="w-24 h-24 bg-gold-50 rounded-full flex items-center justify-center flex-shrink-0">
                         {currentUser.photoURL ? (
-                            <img src={currentUser.photoURL} alt="Profile" className="w-24 h-24 rounded-full object-cover" />
+                            <OptimizedImage src={currentUser.photoURL} alt="Profile" className="w-24 h-24 rounded-full object-cover" loading="lazy" />
                         ) : (
                             <User className="w-10 h-10 text-gold-600" />
                         )}

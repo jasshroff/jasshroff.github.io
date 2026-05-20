@@ -3,9 +3,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { isPrimaryAdminEmail, hasAnyRole } from '../utils/authClaims';
-import { db } from '../firebase';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { Trash2, Upload, LogOut } from 'lucide-react';
+import { db } from '../firebase';
 
 const AdminDashboard = () => {
     const { currentUser, logout, authClaims } = useAuth();
@@ -239,7 +240,7 @@ const AdminDashboard = () => {
                                                 {product.image?.includes('.mp4') || product.image?.includes('.webm') ? (
                                                     <video src={product.image} className="w-full h-full object-cover" muted />
                                                 ) : (
-                                                    <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
+                                        <OptimizedImage src={product.image} alt={product.title} className="w-full h-full object-cover" loading="lazy" />
                                                 )}
                                             </div>
                                             <div className="flex-1 min-w-0">

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { OptimizedImage } from '../components/OptimizedImage';
 import { Helmet } from 'react-helmet-async';
 
 const About = () => {
@@ -30,7 +31,7 @@ const About = () => {
             <section className="py-20 container mx-auto px-4">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                     <div className="md:w-1/2">
-                        <img src="/images/about-1-835x418.jpg" alt="Legacy of Shree Gopaldas Vallabhdas Jewellers Burhanpur" className="rounded-lg shadow-xl w-full" />
+                        <OptimizedImage src="/images/about-1-835x418.jpg" alt="Legacy of Shree Gopaldas Vallabhdas Jewellers Burhanpur" className="rounded-lg shadow-xl w-full" loading="lazy" />
                     </div>
                     <div className="md:w-1/2">
                         <span className="text-gold-600 font-medium tracking-widest uppercase text-sm">Since 1938</span>
@@ -93,7 +94,7 @@ const About = () => {
                     {team.map((member, idx) => (
                         <div key={idx} className="group text-center">
                             <div className="mb-4 overflow-hidden rounded-lg shadow-md aspect-[270/236]">
-                                <img src={member.image} alt={`${member.name} - ${member.role} at SGV Jewellers Burhanpur`} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                                <OptimizedImage src={member.image} alt={`${member.name} - ${member.role} at SGV Jewellers Burhanpur`} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                             </div>
                             <h4 className="text-lg font-serif font-bold text-maroon-950">{member.name}</h4>
                             <p className="text-gold-600 text-sm uppercase tracking-wider">{member.role}</p>

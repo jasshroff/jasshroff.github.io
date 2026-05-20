@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ const Footer = () => {
                     {/* Brand Info */}
                     <div className="space-y-6">
                         <Link to="/" className="block">
-                            <img src="/images/main/sgv.png" alt="Shree Gopaldas Vallabhdas Jewellers" className="h-32 w-auto object-contain brightness-100 opacity-100 transform hover:scale-105 transition-transform" />
+                            <OptimizedImage src="/images/main/sgv.png" alt="Shree Gopaldas Vallabhdas Jewellers" className="h-32 w-auto object-contain brightness-100 opacity-100 transform hover:scale-105 transition-transform" loading="lazy" />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Welcome to Shree Gopaldas Vallabhdas Jewellers, where legacy meets luxury. With a rich heritage dating back to 1938, we have been crafting exceptional gold, diamond, and antique jewellery that stands the test of time.
