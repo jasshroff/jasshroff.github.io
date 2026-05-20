@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { isPrimaryAdminEmail, hasAnyRole } from '../utils/authClaims';
 import { db } from '../firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { Trash2, Upload, LogOut } from 'lucide-react';
 
 const AdminDashboard = () => {
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, authClaims } = useAuth();
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('Gold');
@@ -130,6 +131,14 @@ const AdminDashboard = () => {
                     <h1 className="text-3xl font-serif font-bold text-maroon-950">Admin Dashboard</h1>
                     <div className="flex items-center gap-4">
                         <span className="text-gray-600 hidden sm:inline">{currentUser?.email}</span>
+                        {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['hr'])) && (
+                            <Link
+                                to="/admin/hr"
+                                className="flex items-center gap-2 px-4 py-2 bg-gold-50 text-gold-700 rounded hover:bg-gold-100 transition border border-gold-200 text-sm font-medium"
+                            >
+                                HR Dashboard
+                            </Link>
+                        )}
                         <button
                             onClick={handleLogout}
                             className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded hover:bg-red-100 transition border border-red-200"

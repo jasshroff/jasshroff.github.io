@@ -19,12 +19,6 @@ const Login = () => {
             setError('');
             setLoading(true);
 
-            if (!isPrimaryAdminEmail(email)) {
-                setError('Only the authorized SGV admin account can sign in here.');
-                setLoading(false);
-                return;
-            }
-
             const credential = await login(email, password);
             const token = await getIdTokenResult(credential.user, true);
 

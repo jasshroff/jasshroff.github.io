@@ -2,11 +2,13 @@ import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Helmet } from 'react-helmet-async';
 import { db } from '../firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { isPrimaryAdminEmail, hasAnyRole } from '../utils/authClaims';
 import { collection, getDocs, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import {
   Search, Filter, Download, FileText, Eye, ChevronDown,
   Users, Clock, CheckCircle, XCircle, CalendarCheck, Star,
-  Loader2, StickyNote, ExternalLink, Image
+  Loader2, StickyNote, ExternalLink, Image, LogOut
 } from 'lucide-react';
 
 const STATUS_OPTIONS = ['Pending', 'Shortlisted', 'Rejected', 'Interview Scheduled', 'Selected'];
@@ -54,7 +56,18 @@ function exportToExcel(data, filename) {
 }
 
 const HRDashboard = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, logout, authClaims } = useAuth();
+  const navigate = useNavigate();
+  
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error("Failed to log out", error);
+    }
+  };
+
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -143,13 +156,30 @@ const HRDashboard = () => {
             <h1 className="text-2xl font-serif font-bold text-maroon-950">HR Dashboard</h1>
             <p className="text-sm text-gray-500">Manage job applications • {currentUser?.email}</p>
           </div>
-          <div className="flex gap-2">
-            <button onClick={() => exportToCSV(filtered, 'applications.csv')} className="flex items-center gap-1.5 px-3 py-2 text-sm bg-white border border-gray-300 hover:bg-gray-50 rounded transition">
-              <Download className="w-4 h-4" /> CSV
-            </button>
-            <button onClick={() => exportToExcel(filtered, 'applications.xls')} className="flex items-center gap-1.5 px-3 py-2 text-sm bg-gold-500 text-white hover:bg-gold-600 rounded transition">
-              <Download className="w-4 h-4" /> Excel
-            </button>
+          <div className="flex items-center gap-4">
+            <div className="flex gap-2">
+              <button onClick={() => exportToCSV(filtered, 'applications.csv')} className="flex items-center gap-1.5 px-3 py-2 text-sm bg-white border border-gray-300 hover:bg-gray-50 rounded transition">
+                <Download className="w-4 h-4" /> CSV
+              </button>
+              <button onClick={() => exportToExcel(filtered, 'applications.xls')} className="flex items-center gap-1.5 px-3 py-2 text-sm bg-gold-500 text-white hover:bg-gold-600 rounded transition">
+                <Download className="w-4 h-4" /> Excel
+              </button>
+            </div>
+            
+            <div className="flex items-center gap-2 border-l border-gray-200 pl-4">
+              {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['staff', 'admin'])) && (
+                <Link to="/admin" className="flex items-center gap-1.5 px-3 py-2 text-sm bg-gold-50 text-gold-700 rounded hover:bg-gold-100 transition border border-gold-200 font-medium">
+                  Inventory Dashboard
+                </Link>
+              )}
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 px-3 py-2 text-sm bg-red-50 text-red-600 rounded hover:bg-red-100 transition border border-red-200 font-medium"
+              >
+                <LogOut size={16} />
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
