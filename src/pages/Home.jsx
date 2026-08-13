@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import { CollectionGrid, BestSellers, QualityCTA, Testimonials, Features } from '../components/HomeSections';
+import { CollectionGrid, BestSellers, QualityCTA, Testimonials, Features, BlogPreview } from '../components/HomeSections';
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
@@ -74,6 +74,7 @@ const Home = () => {
                 <QualityCTA />
                 <BestSellers />
                 <Testimonials />
+                <BlogPreview />
             </div>
         </>
     );

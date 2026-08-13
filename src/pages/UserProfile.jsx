@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
-import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Helmet } from 'react-helmet-async';
 import { User, Briefcase, FileText, Loader2, MessageSquare, Clock, CheckCircle, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';

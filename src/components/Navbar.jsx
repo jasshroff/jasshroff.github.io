@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { OptimizedImage } from '../components/OptimizedImage';
-import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard, BookOpen } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -20,16 +20,31 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close menus on route change
+    // Prevent body scroll when mobile menu is open
     useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
+    // Close menus on route change
+    const [prevPath, setPrevPath] = useState(location.pathname);
+    if (prevPath !== location.pathname) {
+        setPrevPath(location.pathname);
         setIsOpen(false);
         setProfileOpen(false);
-    }, [location]);
+    }
 
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'About Us', path: '/about-us' },
         { name: 'Catalog', path: '/catalog' },
+        { name: 'Blog', path: '/blog' },
         { name: 'Careers', path: '/careers' },
         { name: 'Contact Us', path: '/contact-us' },
     ];
@@ -41,24 +56,24 @@ const Navbar = () => {
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center space-x-6">
                         <a href="tel:+919179559000" className="flex items-center hover:text-white transition-colors">
-                            <Phone className="w-4 h-4 mr-2" />
+                            <Phone className="w-4 h-4 mr-2 text-gold-400" />
                             +91 917-955-9000
                         </a>
-                        <div className="flex items-center">
-                            <MapPin className="w-4 h-4 mr-2" />
+                        <div className="flex items-center text-gray-300">
+                            <MapPin className="w-4 h-4 mr-2 text-gold-400" />
                             Burhanpur, M.P.
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        {/* Social placeholders or other utility links could go here */}
-                        <span className="font-serif italic">Est. 1938</span>
+                        <span className="text-xs bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2.5 py-0.5 rounded-full font-serif">BIS 100% Hallmarked</span>
+                        <span className="font-serif italic text-gold-300">Est. 1938</span>
                     </div>
                 </div>
             </div>
 
             {/* Main Navbar */}
             <nav
-                className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4'
+                className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-3 md:py-4'
                     }`}
             >
                 <div className="container mx-auto px-4">
@@ -68,26 +83,27 @@ const Navbar = () => {
                             <OptimizedImage
                                 src="/images/main/sgv.png"
                                 alt="Shree Gopaldas Vallabhdas Jewellers"
-                                className={`transition-all duration-300 object-contain ${scrolled ? 'h-16 scale-110' : 'h-28 scale-110'}`}
+                                className={`transition-all duration-300 object-contain ${scrolled ? 'h-12 md:h-16 scale-105' : 'h-14 md:h-24 scale-105'}`}
                             />
-                            <div className="ml-3 hidden lg:block">
-                                <h1 className="text-lg lg:text-xl font-serif font-bold text-maroon-950 tracking-wide group-hover:text-gold-600 transition-colors uppercase">
-                                    Shree Gopaldas Vallabhdas Jewellers
+                            <div className="ml-2 md:ml-3">
+                                <h1 className="text-sm sm:text-base lg:text-xl font-serif font-bold text-maroon-950 tracking-wide group-hover:text-gold-600 transition-colors uppercase leading-tight">
+                                    SGV Jewellers
                                 </h1>
+                                <p className="text-[10px] sm:text-xs text-gold-600 tracking-widest uppercase hidden sm:block">Shree Gopaldas Vallabhdas</p>
                             </div>
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center space-x-8">
+                        <div className="hidden lg:flex items-center space-x-7 xl:space-x-8">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className={`relative font-medium text-sm uppercase tracking-wider transition-colors hover:text-gold-600 ${location.pathname === link.path ? 'text-gold-600' : 'text-maroon-900'
+                                    className={`relative font-medium text-xs xl:text-sm uppercase tracking-wider transition-colors hover:text-gold-600 py-1 ${location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) ? 'text-gold-600 font-bold' : 'text-maroon-900'
                                         }`}
                                 >
                                     {link.name}
-                                    {location.pathname === link.path && (
+                                    {(location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog'))) && (
                                         <motion.div
                                             layoutId="underline"
                                             className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500"
@@ -97,7 +113,7 @@ const Navbar = () => {
                             ))}
                             <Link
                                 to="/catalog"
-                                className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2 rounded-none font-medium text-sm transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg uppercase tracking-wider"
+                                className="bg-gold-500 hover:bg-gold-600 text-white px-5 xl:px-6 py-2 rounded-none font-medium text-xs xl:text-sm transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg uppercase tracking-wider whitespace-nowrap"
                             >
                                 Shop Now
                             </Link>
@@ -107,6 +123,7 @@ const Navbar = () => {
                                 <div className="relative">
                                     <button
                                         onClick={() => setProfileOpen(!profileOpen)}
+                                        aria-label="User menu"
                                         className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gold-50 text-maroon-900 hover:text-gold-600 transition-colors focus:outline-none border border-gray-200"
                                     >
                                         {currentUser.photoURL ? (
@@ -152,28 +169,31 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="md:hidden text-maroon-900 hover:text-gold-600 focus:outline-none"
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            aria-expanded={isOpen}
+                            className="lg:hidden text-maroon-900 hover:text-gold-600 focus:outline-none p-2"
                         >
                             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
-                </div >
+                </div>
 
                 {/* Mobile Menu Dropdown */}
-                < AnimatePresence >
+                <AnimatePresence>
                     {isOpen && (
                         <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            className="md:hidden overflow-hidden bg-white border-t border-gray-100"
+                            transition={{ duration: 0.3 }}
+                            className="lg:hidden overflow-hidden bg-white border-t border-gray-100 shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto"
                         >
-                            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                            <div className="container mx-auto px-4 py-6 flex flex-col space-y-3">
                                 {navLinks.map((link) => (
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`block py-2 text-base font-medium border-b border-gray-100 ${location.pathname === link.path ? 'text-gold-600' : 'text-maroon-900'
+                                        className={`block py-2.5 px-3 rounded text-base font-medium transition-colors ${location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) ? 'text-gold-600 bg-gold-50 font-bold' : 'text-maroon-950 hover:bg-gray-50'
                                             }`}
                                     >
                                         {link.name}
@@ -181,26 +201,26 @@ const Navbar = () => {
                                 ))}
                                 <Link
                                     to="/catalog"
-                                    className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white py-3 mt-4 font-medium uppercase tracking-wider"
+                                    className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white py-3 mt-2 font-medium uppercase tracking-wider shadow-md"
                                 >
                                     Shop Now
                                 </Link>
                                 {currentUser && (
                                     <div className="pt-4 mt-2 border-t border-gray-100 flex flex-col space-y-2">
-                                        <div className="px-2 mb-2">
+                                        <div className="px-3 mb-2">
                                             <p className="text-sm font-medium text-gray-900">{currentUser.displayName || 'User'}</p>
                                             <p className="text-xs text-gray-500">{currentUser.email}</p>
                                         </div>
                                         <Link
                                             to="/profile"
-                                            className="flex items-center py-2 px-2 text-base font-medium text-maroon-900 hover:text-gold-600 transition-colors"
+                                            className="flex items-center py-2 px-3 text-base font-medium text-maroon-900 hover:text-gold-600 transition-colors"
                                         >
                                             <LayoutDashboard className="w-5 h-5 mr-3 text-gold-500" />
                                             My Profile & Apps
                                         </Link>
                                         <button
                                             onClick={logout}
-                                            className="flex items-center py-2 px-2 text-base font-medium text-red-600 hover:text-red-700 transition-colors text-left"
+                                            className="flex items-center py-2 px-3 text-base font-medium text-red-600 hover:text-red-700 transition-colors text-left"
                                         >
                                             <LogOut className="w-5 h-5 mr-3" />
                                             Sign Out
@@ -209,10 +229,9 @@ const Navbar = () => {
                                 )}
                             </div>
                         </motion.div>
-                    )
-                    }
-                </AnimatePresence >
-            </nav >
+                    )}
+                </AnimatePresence>
+            </nav>
         </>
     );
 };

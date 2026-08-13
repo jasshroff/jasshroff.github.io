@@ -1,23 +1,38 @@
 import React from 'react';
-import { Img } from 'vite-imagetools';
 
 /**
- * OptimizedImage renders a static image using vite-imagetools for automatic compression.
+ * OptimizedImage renders an image with native lazy loading, async decoding,
+ * and responsive alt/size attributes.
  * Props:
- *   src: string - relative path to the image (e.g., '/images/logo.png')
+ *   src: string - path to the image
  *   alt: string - alt text for accessibility
  *   className?: string - any Tailwind or CSS classes
- *   width?: number | string - optional width (will be passed to imagetools)
- *   height?: number | string - optional height
+ *   loading?: 'lazy' | 'eager'
+ *   width?: number | string
+ *   height?: number | string
  *   ...rest: any other img attributes
  */
-export const OptimizedImage = ({ src, alt = '', className = '', width, height, ...rest }) => {
-  const params = new URLSearchParams();
-  params.set('format', 'webp');
-  params.set('quality', '80');
-  if (width) params.set('width', width);
-  if (height) params.set('height', height);
-
-  const optimizedSrc = `${src}?${params.toString()}`;
-  return <Img src={optimizedSrc} alt={alt} className={className} {...rest} />;
+export const OptimizedImage = ({ 
+  src, 
+  alt = '', 
+  className = '', 
+  loading = 'lazy',
+  width, 
+  height, 
+  ...rest 
+}) => {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      loading={loading}
+      decoding="async"
+      width={width}
+      height={height}
+      {...rest}
+    />
+  );
 };
+
+export default OptimizedImage;

@@ -78,8 +78,6 @@ const HRDashboard = () => {
   const [updatingId, setUpdatingId] = useState(null);
   const [editingNotes, setEditingNotes] = useState({});
 
-  useEffect(() => { fetchApplications(); }, []);
-
   const fetchApplications = async () => {
     try {
       const snap = await getDocs(collection(db, 'jobApplications'));
@@ -92,6 +90,8 @@ const HRDashboard = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => { fetchApplications(); }, []);
 
   const updateStatus = async (id, newStatus) => {
     setUpdatingId(id);

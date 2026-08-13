@@ -37,14 +37,17 @@ function validateFile(file, allowedExts, label) {
   return null;
 }
 
-const SectionTitle = ({ icon: Icon, title }) => (
-  <div className="flex items-center gap-3 mb-6 pb-3 border-b border-gold-200">
-    <div className="w-9 h-9 bg-gold-50 text-gold-600 rounded-full flex items-center justify-center">
-      <Icon className="w-4 h-4" />
+const SectionTitle = (props) => {
+  const IconComponent = props.icon;
+  return (
+    <div className="flex items-center gap-3 mb-6 pb-3 border-b border-gold-200">
+      <div className="w-9 h-9 bg-gold-50 text-gold-600 rounded-full flex items-center justify-center">
+        {IconComponent && <IconComponent className="w-4 h-4" />}
+      </div>
+      <h3 className="text-lg font-serif font-bold text-maroon-950">{props.title}</h3>
     </div>
-    <h3 className="text-lg font-serif font-bold text-maroon-950">{title}</h3>
-  </div>
-);
+  );
+};
 
 const Input = ({ label, required, ...props }) => (
   <div>

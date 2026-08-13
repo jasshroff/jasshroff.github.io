@@ -22,10 +22,6 @@ const AdminDashboard = () => {
     const categories = ['Gold', 'Antique', 'Necklace', 'Rings', 'Bangles', 'Diamond', 'Silver'];
     const types = ['standard', 'large', 'wide', 'vertical'];
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
     const fetchProducts = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "products"));
@@ -40,6 +36,10 @@ const AdminDashboard = () => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
 
     const handleLogout = async () => {
         try {

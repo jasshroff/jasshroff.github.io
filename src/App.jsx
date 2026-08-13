@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Catalog from './pages/Catalog';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Careers from './pages/Careers';
 import JobApplication from './pages/JobApplication';
 import Login from './pages/Login';
@@ -26,13 +28,16 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="contact-us" element={<Contact />} />
+            <Route path="catalog" element={<Catalog />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="careers" element={<Careers />} />
             <Route path="careers/apply" element={<JobApplication />} />
             
             {/* Redirects for legacy/shorter paths */}
             <Route path="about" element={<Navigate to="/about-us" replace />} />
             <Route path="contact" element={<Navigate to="/contact-us" replace />} />
-            <Route path="catalog" element={<Catalog />} />
+            <Route path="blogs" element={<Navigate to="/blog" replace />} />
             <Route path="login" element={<Login />} />
             <Route
               path="profile"

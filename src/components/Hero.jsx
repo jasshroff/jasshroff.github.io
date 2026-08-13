@@ -37,7 +37,7 @@ const Hero = () => {
     ];
 
     return (
-        <section className="relative h-[600px] md:h-[800px] w-full overflow-hidden bg-maroon-950">
+        <section className="relative h-[500px] md:h-[800px] w-full overflow-hidden bg-maroon-950">
             <Swiper
                 modules={[Pagination, Autoplay, EffectFade]}
                 effect={'fade'}
@@ -55,12 +55,12 @@ const Hero = () => {
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-ken-burns"
                                 style={{ backgroundImage: `url(${slide.image})` }}
                             >
-                                {/* Overlay for better text readability */}
-                                <div className="absolute inset-0 bg-black/40 md:bg-black/30"></div>
+                                {/* Overlay — stronger on mobile for readability */}
+                                <div className="absolute inset-0 bg-black/50 md:bg-black/30"></div>
                             </div>
 
                             {/* Content */}
-                            <div className="absolute inset-0 flex items-center container mx-auto px-4 z-10">
+                            <div className="absolute inset-0 flex items-center container mx-auto px-4 sm:px-6 z-10">
                                 <div className={`w-full md:w-2/3 lg:w-1/2 ${slide.position}`}>
                                     <motion.div
                                         initial={{ opacity: 0, y: 30 }}
@@ -68,15 +68,15 @@ const Hero = () => {
                                         transition={{ duration: 0.8, delay: 0.2 }}
                                         className="text-white"
                                     >
-                                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-4 leading-tight">
+                                        <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-3 md:mb-4 leading-tight">
                                             {slide.title}
                                         </h2>
-                                        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg font-light leading-relaxed">
+                                        <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 md:mb-8 max-w-lg font-light leading-relaxed">
                                             {slide.subtitle}
                                         </p>
                                         <Link
                                             to={slide.link}
-                                            className="inline-block px-8 py-3 bg-gold-500 text-white font-medium uppercase tracking-wider hover:bg-gold-600 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                                            className="inline-block px-6 sm:px-8 py-3 bg-gold-500 text-white font-medium uppercase tracking-wider hover:bg-gold-600 transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-sm sm:text-base"
                                         >
                                             View Collection
                                         </Link>
@@ -87,19 +87,6 @@ const Hero = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-
-            {/* Custom Styles for Swiper Navigation */}
-            <style jsx>{`
-
-        .swiper-pagination-bullet {
-          background: #fff;
-          opacity: 0.5;
-        }
-        .swiper-pagination-bullet-active {
-          background: #d4aa1e;
-          opacity: 1;
-        }
-      `}</style>
         </section>
     );
 };
