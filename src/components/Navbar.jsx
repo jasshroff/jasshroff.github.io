@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { OptimizedImage } from '../components/OptimizedImage';
-import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard, BookOpen } from 'lucide-react';
+import { Menu, X, Phone, MapPin, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,11 +12,25 @@ const Navbar = () => {
     const location = useLocation();
     const { currentUser, logout } = useAuth();
 
+    // Hysteresis scroll listener with requestAnimationFrame to eliminate all layout jitter
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    if (scrollY > 50) {
+                        setScrolled(true);
+                    } else if (scrollY < 15) {
+                        setScrolled(false);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
-        window.addEventListener('scroll', handleScroll);
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -50,8 +64,8 @@ const Navbar = () => {
     ];
 
     return (
-        <>
-            {/* Top Bar - Contact Info (Hidden on small screens) */}
+        <header className="w-full">
+            {/* Top Bar - Contact Info */}
             <div className="bg-maroon-950 text-gold-200 py-2 px-4 hidden md:block text-sm border-b border-gold-900/20">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center space-x-6">
@@ -71,19 +85,22 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Main Navbar */}
+            {/* Main Navbar - Fixed height to guarantee zero layout shift / shaking */}
             <nav
-                className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-3 md:py-4'
-                    }`}
+                className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+                    scrolled 
+                        ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100' 
+                        : 'bg-white border-b border-gray-50'
+                }`}
             >
                 <div className="container mx-auto px-4">
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center h-20 md:h-24">
                         {/* Logo */}
-                        <Link to="/" className="flex items-center group">
+                        <Link to="/" className="flex items-center group py-1">
                             <OptimizedImage
                                 src="/images/main/sgv.png"
                                 alt="Shree Gopaldas Vallabhdas Jewellers"
-                                className={`transition-all duration-300 object-contain ${scrolled ? 'h-12 md:h-16 scale-105' : 'h-14 md:h-24 scale-105'}`}
+                                className="h-14 md:h-20 w-auto object-contain transition-transform group-hover:scale-105"
                             />
                             <div className="ml-2 md:ml-3">
                                 <h1 className="text-sm sm:text-base lg:text-xl font-serif font-bold text-maroon-950 tracking-wide group-hover:text-gold-600 transition-colors uppercase leading-tight">
@@ -99,8 +116,11 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.path}
-                                    className={`relative font-medium text-xs xl:text-sm uppercase tracking-wider transition-colors hover:text-gold-600 py-1 ${location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) ? 'text-gold-600 font-bold' : 'text-maroon-900'
-                                        }`}
+                                    className={`relative font-medium text-xs xl:text-sm uppercase tracking-wider transition-colors hover:text-gold-600 py-1 ${
+                                        location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) 
+                                            ? 'text-gold-600 font-bold' 
+                                            : 'text-maroon-900'
+                                    }`}
                                 >
                                     {link.name}
                                     {(location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog'))) && (
@@ -113,7 +133,7 @@ const Navbar = () => {
                             ))}
                             <Link
                                 to="/catalog"
-                                className="bg-gold-500 hover:bg-gold-600 text-white px-5 xl:px-6 py-2 rounded-none font-medium text-xs xl:text-sm transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg uppercase tracking-wider whitespace-nowrap"
+                                className="bg-gold-500 hover:bg-gold-600 text-white px-5 xl:px-6 py-2.5 rounded-none font-medium text-xs xl:text-sm transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg uppercase tracking-wider whitespace-nowrap"
                             >
                                 Shop Now
                             </Link>
@@ -193,8 +213,11 @@ const Navbar = () => {
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`block py-2.5 px-3 rounded text-base font-medium transition-colors ${location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) ? 'text-gold-600 bg-gold-50 font-bold' : 'text-maroon-950 hover:bg-gray-50'
-                                            }`}
+                                        className={`block py-2.5 px-3 rounded text-base font-medium transition-colors ${
+                                            location.pathname === link.path || (link.path === '/blog' && location.pathname.startsWith('/blog')) 
+                                                ? 'text-gold-600 bg-gold-50 font-bold' 
+                                                : 'text-maroon-950 hover:bg-gray-50'
+                                        }`}
                                     >
                                         {link.name}
                                     </Link>
@@ -232,7 +255,7 @@ const Navbar = () => {
                     )}
                 </AnimatePresence>
             </nav>
-        </>
+        </header>
     );
 };
 

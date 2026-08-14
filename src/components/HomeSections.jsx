@@ -118,7 +118,7 @@ export const BestSellers = () => {
 // Quality CTA
 export const QualityCTA = () => {
     return (
-        <section className="relative py-20 md:py-32 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/images/main/craftmanship.jpeg')" }}>
+        <section className="relative py-20 md:py-32 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/images/optimized/craftsmanship-desktop.jpg')" }}>
             <div className="absolute inset-0 bg-black/60"></div>
             <div className="container mx-auto px-4 relative z-10 text-center md:text-right">
                 <div className="md:w-1/2 ml-auto">

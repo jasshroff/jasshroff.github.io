@@ -60,7 +60,7 @@ const Blog = () => {
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 0.08, scale: 1 }}
                     transition={{ duration: 1.5 }}
-                    className="absolute inset-0 bg-[url('/images/main/craftmanship.jpeg')] bg-cover bg-center"
+                    className="absolute inset-0 bg-[url('/images/optimized/craftsmanship-desktop.jpg')] bg-cover bg-center"
                 />
                 <div className="relative z-10 container mx-auto px-4">
                     <motion.span

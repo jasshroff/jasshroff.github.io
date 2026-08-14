@@ -22,7 +22,7 @@ export const blogPosts = [
     date: '2025-07-15',
     readTime: '8 min read',
     tags: ['22K Gold', 'BIS Hallmark', 'Gold Purity', 'Buying Guide'],
-    image: '/images/main/craftmanship.jpeg',
+    image: '/images/optimized/craftsmanship-desktop.jpg',
     metaTitle: 'Complete Guide to 22K Gold Jewellery | Purity, Pricing & Care | SGV Jewellers',
     metaDescription: 'Learn everything about 22K gold jewellery — what makes it 91.67% pure, how BIS hallmarking works, pricing formula, and expert care tips from SGV Jewellers Burhanpur.',
     content: `
@@ -109,7 +109,7 @@ At SGV Jewellers, we've upheld these principles since 1938 — serving families 
     date: '2025-06-28',
     readTime: '7 min read',
     tags: ['Bridal Jewellery', 'Wedding', 'Gold Sets', 'Bridal Guide'],
-    image: '/images/main/Banner_New_Collection.png',
+    image: '/images/optimized/banner-new-desktop.jpg',
     metaTitle: 'How to Choose Perfect Bridal Jewellery | Wedding Gold Guide | SGV Jewellers',
     metaDescription: 'Expert tips on choosing bridal jewellery — from traditional gold sets to modern diamond pieces. Budget planning, regional styles, and what every bride needs.',
     content: `
@@ -283,7 +283,7 @@ At SGV Jewellers, we were early adopters of hallmarking — long before it becam
     date: '2025-05-20',
     readTime: '9 min read',
     tags: ['Gold Investment', 'Financial Planning', 'Gold Rates', 'Savings'],
-    image: '/images/main/Banner_GoldChain.png',
+    image: '/images/optimized/banner-chain-desktop.jpg',
     metaTitle: 'Gold Investment Guide for Indian Families | Buy Gold Wisely | SGV Jewellers',
     metaDescription: 'Expert guide on investing in gold in India — physical vs digital gold, sovereign gold bonds, gold ETFs, and when to buy for maximum returns.',
     content: `
@@ -393,7 +393,7 @@ One of physical gold's strongest features is **liquidity**. At SGV Jewellers:
     date: '2025-05-05',
     readTime: '5 min read',
     tags: ['Jewellery Care', 'Gold Maintenance', 'Cleaning Tips', 'Storage'],
-    image: '/images/main/Banner_Customised_Jewellery.png',
+    image: '/images/optimized/banner-custom-desktop.jpg',
     metaTitle: 'Gold Jewellery Care Guide — Cleaning, Storage & Maintenance | SGV Jewellers',
     metaDescription: 'Expert tips on caring for gold jewellery — how to clean 22K gold at home, proper storage, what damages gold, and when to get professional servicing.',
     content: `

@@ -28,7 +28,7 @@ const About = () => {
 
             {/* Hero Header */}
             <div className="relative bg-maroon-950 text-white py-20 md:py-28 text-center overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/images/main/craftmanship.jpeg')] bg-cover bg-center opacity-30"></div>
+                <div className="absolute inset-0 bg-[url('/images/optimized/craftsmanship-desktop.jpg')] bg-cover bg-center opacity-30"></div>
                 <div className="relative z-10 container mx-auto px-4">
                     <motion.span
                         initial={{ opacity: 0, y: -10 }}

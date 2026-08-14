@@ -125,7 +125,7 @@ const Contact = () => {
                             WhatsApp Inquiry
                         </a>
                         <a
-                            href="https://maps.google.com/?q=21.3121,76.2233"
+                            href="https://www.google.com/maps/place/Shree+Gopaldas+Vallabhdas+Jewellers+%7CBest+Jewellery+Shop+%7C+Gold+And+Silver+Jewellery+Shop+%7C+Jewellers+In+Burhanpur/@21.3063828,76.2314022,19.99z/data=!4m14!1m7!3m6!1s0x3bd8336530f39f59:0x89a0cd0e33fac384!2sShree+Gopaldas+Vallabhdas+Jewellers+%7CBest+Jewellery+Shop+%7C+Gold+And+Silver+Jewellery+Shop+%7C+Jewellers+In+Burhanpur!8m2!3d21.3064149!4d76.2313519!16s%2Fg%2F11vxh6ygqd!3m5!1s0x3bd8336530f39f59:0x89a0cd0e33fac384!8m2!3d21.3064149!4d76.2313519!16s%2Fg%2F11vxh6ygqd!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgxMS4wIKXMDSoASAFQAw%3D%3D"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-white border border-gray-200 text-maroon-950 px-5 py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm hover:border-gold-500 hover:text-gold-600 transition-colors"

@@ -12,7 +12,7 @@ const Hero = () => {
     const slides = [
         {
             id: 1,
-            image: '/images/main/Banner_New_Collection.png',
+            image: '/images/optimized/banner-new-desktop.jpg',
             title: 'New Collection',
             subtitle: 'Our latest assortment gleams with an ethereal brilliance.',
             link: '/catalog',
@@ -20,7 +20,7 @@ const Hero = () => {
         },
         {
             id: 2,
-            image: '/images/main/Banner_GoldChain.png',
+            image: '/images/optimized/banner-chain-desktop.jpg',
             title: 'Gold Chains',
             subtitle: 'Everyday gold chains to accentuate your stunning neck!!',
             link: '/catalog',
@@ -28,7 +28,7 @@ const Hero = () => {
         },
         {
             id: 3,
-            image: '/images/main/Banner_Customised_Jewellery.png',
+            image: '/images/optimized/banner-custom-desktop.jpg',
             title: 'Customised Jewellery',
             subtitle: 'Your Vision, Our Craft: Exquisite Custom Jewellery Made Just for You.',
             link: '/contact-us',
