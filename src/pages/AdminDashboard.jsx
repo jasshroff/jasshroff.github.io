@@ -132,6 +132,12 @@ const AdminDashboard = () => {
                     <h1 className="text-3xl font-serif font-bold text-maroon-950">Admin Dashboard</h1>
                     <div className="flex items-center gap-4">
                         <span className="text-gray-600 hidden sm:inline">{currentUser?.email}</span>
+                        <Link
+                            to="/admin/crm"
+                            className="flex items-center gap-2 px-4 py-2 bg-maroon-50 text-maroon-700 rounded hover:bg-maroon-100 transition border border-maroon-200 text-sm font-medium"
+                        >
+                            CRM Portal
+                        </Link>
                         {(isPrimaryAdminEmail(currentUser?.email) || hasAnyRole(authClaims, ['hr'], currentUser?.email)) && (
                             <Link
                                 to="/admin/hr"
