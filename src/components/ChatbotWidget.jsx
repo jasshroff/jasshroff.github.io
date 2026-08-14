@@ -23,7 +23,7 @@ const INITIAL_MESSAGE = {
     id: 'welcome',
     role: 'assistant',
     content:
-        'Namaste! I am the SGV Jewellers assistant. Ask me about collections, bridal jewellery, BIS/HUID hallmarking, showroom timings, gold pricing basics, maintenance, or buyback.',
+        'Namaste ji! Main SGV Jewellers ka AI assistant hoon. Aap collections, bridal/custom jewellery, BIS/HUID hallmarking, showroom timings, pricing process, maintenance ya buyback ke baare me pooch sakte hain.',
     sources: [],
 };
 
@@ -172,7 +172,7 @@ const ChatbotWidget = () => {
                                             SGV AI Assistant
                                         </h2>
                                         <p className="text-xs text-gold-100">
-                                            24/7 guidance for visitors
+                                            24/7 customer guidance
                                         </p>
                                     </div>
                                 </div>
@@ -219,7 +219,7 @@ const ChatbotWidget = () => {
                                     </div>
                                     <div className="inline-flex items-center gap-2 rounded-lg border border-gray-100 bg-white px-4 py-3 shadow-sm">
                                         <Loader2 className="h-4 w-4 animate-spin text-gold-600" />
-                                        Checking SGV knowledge...
+                                        SGV verified info check kar raha hoon...
                                     </div>
                                 </div>
                             )}
@@ -256,7 +256,7 @@ const ChatbotWidget = () => {
                                         }
                                     }}
                                     rows={1}
-                                    placeholder="Ask about collections, gold rates, BIS, bridal..."
+                                    placeholder="Poochiye: collections, gold rate, BIS, bridal..."
                                     className="max-h-24 min-h-[44px] flex-1 resize-none rounded border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-800 outline-none transition-colors placeholder:text-gray-400 focus:border-gold-500 focus:bg-white focus:ring-1 focus:ring-gold-500"
                                 />
                                 <button
@@ -274,7 +274,7 @@ const ChatbotWidget = () => {
                             </form>
 
                             <p className="mt-2 text-[11px] leading-relaxed text-gray-400">
-                                AI answers use SGV website knowledge. Confirm live rates, stock, and billing with the showroom.
+                                AI sirf SGV verified context se answer karta hai. Live rates, stock aur billing showroom se confirm karein.
                             </p>
                         </div>
                     </motion.section>

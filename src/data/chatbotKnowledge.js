@@ -13,10 +13,10 @@ export const businessProfile = {
 };
 
 export const chatbotQuickPrompts = [
-    'What jewellery collections do you have?',
-    'Do you make custom bridal jewellery?',
-    'How do I verify BIS hallmarking?',
-    'Where is your showroom?',
+    'Collections ke baare me bataiye',
+    'Custom bridal jewellery banate hain?',
+    'BIS/HUID kaise verify karu?',
+    'Showroom kaha hai?',
 ];
 
 export const chatbotKnowledgeBase = [

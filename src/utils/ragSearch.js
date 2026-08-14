@@ -5,6 +5,8 @@ const STOP_WORDS = new Set([
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'can', 'could', 'do', 'does', 'for', 'from',
     'have', 'how', 'i', 'in', 'is', 'it', 'me', 'my', 'of', 'on', 'or', 'our', 'please', 'the',
     'to', 'us', 'we', 'what', 'when', 'where', 'which', 'who', 'with', 'you', 'your',
+    'aur', 'bataiye', 'batao', 'hai', 'hain', 'ji', 'ka', 'kaha', 'kaise', 'karu', 'ke', 'ki',
+    'kya', 'me', 'mein', 'mujhe', 'se',
 ]);
 
 const QUERY_EXPANSIONS = {
@@ -17,16 +19,34 @@ const QUERY_EXPANSIONS = {
     call: ['phone', 'contact', 'whatsapp'],
     catalog: ['collection', 'products', 'designs'],
     custom: ['customised', 'customized', 'design', 'personalised'],
+    daam: ['price', 'pricing', 'rate', 'cost'],
     diamond: ['certified', 'gem', 'stones'],
+    bhav: ['price', 'pricing', 'rate', 'cost'],
     gold: ['22k', '916', 'hallmark', 'rate', 'purity'],
     job: ['career', 'hiring', 'apply', 'vacancy'],
+    kidhar: ['address', 'location', 'showroom', 'directions'],
     open: ['hours', 'timing', 'showroom'],
     pooja: ['puja', 'silver', 'mandir', 'diya', 'kalash', 'thali', 'coin', 'coins'],
     repair: ['maintenance', 'polish', 'cleaning', 'service'],
-    silver: ['925', 'sterling', 'chandi', 'payal', 'bichhiya', 'kada', 'pooja', 'coin', 'tarnish', 'clean'],
-    tarnish: ['black', 'clean', 'polish', 'silver', 'baking', 'soda'],
     whatsapp: ['contact', 'message', 'phone'],
 };
+
+const ALLOWED_SCOPE_TERMS = new Set([
+    '916', 'about', 'address', 'antique', 'apply', 'appointment', 'bangle', 'bangles', 'bhav',
+    'bis', 'bridal', 'bride', 'burhanpur', 'buyback', 'career', 'care', 'catalog', 'certificate',
+    'certified', 'chain', 'chandi', 'clean', 'collection', 'collections', 'contact', 'custom',
+    'customised', 'customized', 'daam', 'diamond', 'directions', 'earring', 'earrings', 'email',
+    'exchange', 'gold', 'hallmark', 'hallmarked', 'haar', 'hours', 'huid', 'investment',
+    'jeweller', 'jewellers', 'jewellery', 'jewelry', 'job', 'kitna', 'location', 'maintenance',
+    'making', 'necklace', 'open', 'pendant', 'phone', 'polish', 'price', 'pricing', 'purity',
+    'rate', 'repair', 'return', 'rings', 'sgv', 'shop', 'showroom', 'silver', 'stock', 'store',
+    'timing', 'visit', 'wedding', 'whatsapp',
+]);
+
+const LIVE_QUERY_PATTERN =
+    /((today|current|live|latest|aaj|abhi).*(rate|price|gold|silver|stock|available|availability|making|charges|discount|offer|scheme|bhav|daam))|((rate|price|stock|available|availability|making|charges|discount|offer|scheme|bhav|daam).*(today|current|live|latest|aaj|abhi))|\b(in stock|available|availability|ready|booking|order status|delivery status|same day|discount|offer|scheme)\b/;
+
+const MIN_GENERAL_SCORE = 4;
 
 const stripMarkdown = (text = '') =>
     text
@@ -110,6 +130,7 @@ const getIntent = (message = '') => {
     const text = normalize(message);
 
     if (/^(hi|hello|hey|namaste|namaskar)\b/.test(text)) return 'greeting';
+    if (LIVE_QUERY_PATTERN.test(text)) return 'live';
     if (/(phone|call|whatsapp|email|contact|number|address|location|direction|map|where|showroom)/.test(text)) return 'contact';
     if (/(open|timing|time|hour|today|sunday|monday|visit)/.test(text)) return 'hours';
     if (/(price|rate|cost|gold rate|making|charge|gst|weight|gram|today)/.test(text)) return 'pricing';
@@ -118,13 +139,16 @@ const getIntent = (message = '') => {
     if (/(return|exchange|buyback|buy back|maintenance|repair|polish|clean)/.test(text)) return 'policy';
     if (/(catalog|collection|product|ring|bangle|necklace|earring|pendant|chain|silver|diamond|antique|gold)/.test(text)) return 'collections';
     if (/(career|job|hiring|apply|vacancy|work)/.test(text)) return 'careers';
+    if (/(about|history|legacy|trust|established|owner|founder|family|shroff)/.test(text)) return 'about';
 
     return 'general';
 };
 
 const INTENT_SOURCE_IDS = {
+    about: ['business-overview'],
     contact: ['showroom-contact', 'business-overview'],
     hours: ['showroom-contact'],
+    live: ['pricing-gold-rate', 'showroom-contact'],
     pricing: ['pricing-gold-rate', 'blog-complete-guide-22k-gold-jewellery-summary'],
     quality: ['quality-certification', 'blog-understanding-bis-hallmarking-summary'],
     bridal: ['bridal-custom-jewellery', 'blog-how-to-choose-perfect-bridal-jewellery-summary'],
@@ -154,7 +178,7 @@ export const retrieveRelevantDocs = (message, limit = 4) => {
     const queryTokens = expandTokens(tokenize(message));
 
     if (queryTokens.length === 0) {
-        return chatbotKnowledgeBase.slice(0, 3).map((doc) => ({ ...doc, score: 1 }));
+        return [];
     }
 
     const matches = allDocuments
@@ -165,9 +189,7 @@ export const retrieveRelevantDocs = (message, limit = 4) => {
 
     if (matches.length > 0) return matches;
 
-    return chatbotKnowledgeBase
-        .filter((doc) => ['business-overview', 'showroom-contact', 'collections-overview'].includes(doc.id))
-        .map((doc) => ({ ...doc, score: 1 }));
+    return [];
 };
 
 const getRelevantSentences = (docs, message, maxSentences = 4) => {
@@ -216,49 +238,77 @@ const sourcesForMessage = (message, docs, limit = 3) => {
     return uniqueSources([...preferredDocs, ...docs], limit);
 };
 
+const isOutOfScope = (message, docs) => {
+    const intent = getIntent(message);
+    if (intent !== 'general') return false;
+
+    const queryTokens = tokenize(message);
+    if (queryTokens.length === 0) return false;
+
+    const hasScopeTerm = queryTokens.some((token) => ALLOWED_SCOPE_TERMS.has(token));
+    const topScore = docs[0]?.score || 0;
+
+    return !hasScopeTerm || docs.length === 0 || topScore < MIN_GENERAL_SCORE;
+};
+
+const getOutOfScopeAnswer = () =>
+    `Namaste ji, is question par main verified SGV Jewellers context ke bahar answer nahi de sakta, taaki aapko galat information na mile.\n\nMain SGV collections, bridal/custom jewellery, BIS/HUID hallmarking, showroom timing, pricing process, jewellery care, maintenance, buyback aur careers ke baare me help kar sakta hoon. Urgent help ke liye please call/WhatsApp ${businessProfile.phone}.`;
+
 const getDeterministicAnswer = (message, docs) => {
     const intent = getIntent(message);
     const sentences = getRelevantSentences(docs, message, 4);
 
+    if (isOutOfScope(message, docs)) {
+        return getOutOfScopeAnswer();
+    }
+
     switch (intent) {
         case 'greeting':
-            return `Namaste! I am the ${businessProfile.shortName} assistant. I can help with collections, bridal jewellery, BIS/HUID hallmarking, showroom visits, pricing basics, maintenance, buyback, and contact details.`;
+            return `Namaste ji! Main ${businessProfile.shortName} ka AI assistant hoon. Aap collections, bridal/custom jewellery, BIS/HUID hallmarking, showroom visit, pricing process, maintenance, buyback ya contact details ke baare me pooch sakte hain.`;
+
+        case 'about':
+            return `Namaste ji, ${businessProfile.shortName} Burhanpur ka trusted jewellery showroom hai. Shree Gopaldas Vallabhdas Jewellers ki legacy 1938 se hai, aur store 100% BIS Hallmarked jewellery, transparent pricing, craftsmanship aur family-led service ke liye jaana jaata hai.`;
 
         case 'contact':
-            return `You can reach ${businessProfile.shortName} here:\n\n- Call/WhatsApp: ${businessProfile.phone}\n- Email: ${businessProfile.email}\n- Showroom: ${businessProfile.address}\n- Timings: ${businessProfile.hours}`;
+            return `Namaste ji, zaroor. ${businessProfile.shortName} ke details yeh hain:\n\n- Call/WhatsApp: ${businessProfile.phone}\n- Email: ${businessProfile.email}\n- Showroom: ${businessProfile.address}\n- Timings: ${businessProfile.hours}`;
 
         case 'hours':
-            return `${businessProfile.shortName} showroom timings are ${businessProfile.hours}. For bridal consultations or product availability, it is best to call or WhatsApp ${businessProfile.phone} before visiting.`;
+            return `Namaste ji, ${businessProfile.shortName} showroom timings: ${businessProfile.hours}.\n\nBridal consultation ya product availability ke liye visit se pehle call/WhatsApp kar dena best rahega: ${businessProfile.phone}.`;
+
+        case 'live':
+            return `Namaste ji, live rate, current stock, availability, offers ya same-day delivery jaise details real-time change hote hain. Main guess karke answer nahi dunga.\n\nAccurate aur verified information ke liye please abhi call/WhatsApp karein: ${businessProfile.phone}. SGV team aapko latest rate, weight, availability aur billing details confirm kar degi.`;
 
         case 'pricing':
-            return `Gold rates and product prices change with the live gold rate, weight, making charges, design complexity, and GST. A common jewellery pricing formula is: gold weight in grams x current gold rate per gram + making charges + GST.\n\nFor today's exact rate, weight, and availability, please call or WhatsApp ${businessProfile.phone}.`;
+            return `Namaste ji, jewellery pricing usually is formula se hoti hai: gold weight in grams x current gold rate per gram + making charges + GST.\n\nGold/silver rates daily change hote hain, aur final price design, weight aur making charges par depend karta hai. Aaj ka exact rate, stock aur billing confirm karne ke liye please call/WhatsApp karein: ${businessProfile.phone}.`;
 
         case 'quality':
-            return `${businessProfile.shortName} focuses on certified jewellery: 100% BIS Hallmarked gold with HUID verification, transparent purity details, and certified diamonds. HUID is a unique 6-character code that helps verify and trace hallmarked gold jewellery.`;
+            return `Namaste ji, ${businessProfile.shortName} certified jewellery par focus karta hai: 100% BIS Hallmarked gold, HUID verification, transparent purity details aur certified diamonds. HUID ek unique 6-character code hota hai jisse hallmarked gold jewellery verify aur trace ki ja sakti hai.`;
 
         case 'bridal':
-            return `Yes. ${businessProfile.shortName} helps with bridal jewellery, wedding sets, personalised consultations, and custom jewellery. Popular bridal pieces include Rani Haar, necklaces, earrings, Maang Tikka, bangles, rings, and antique-finish sets. Custom work can take around 15-30 days depending on the design, so starting early is recommended.`;
+            return `Namaste ji, haan. ${businessProfile.shortName} bridal jewellery, wedding sets, personalised consultations aur custom jewellery me help karta hai. Popular bridal pieces me Rani Haar, necklaces, earrings, Maang Tikka, bangles, rings aur antique-finish sets aate hain.\n\nCustom work design complexity par depend karta hai; usually 15-30 days ka planning window rakhna better rahega.`;
 
         case 'policy':
-            return `${businessProfile.shortName} highlights easy returns, lifetime maintenance, lifetime buyback, transparent pricing, and after-sales care. Since returns, exchange, maintenance, polishing, repair, and buyback can depend on the exact piece, purity, bill, and condition, please confirm details directly with the showroom.`;
+            return `Namaste ji, ${businessProfile.shortName} easy returns, lifetime maintenance, lifetime buyback, transparent pricing aur after-sales care highlight karta hai.\n\nReturn, exchange, repair, polishing ya buyback exact piece, purity, bill aur condition par depend kar sakta hai, isliye final confirmation showroom se lena best rahega: ${businessProfile.phone}.`;
 
         case 'collections':
-            return `${businessProfile.shortName} offers gold, diamond, antique, and silver jewellery. Website collections include earrings, necklaces, rings, bangles, pendants, men chains, Maang Tikka, Gold Set, Wedding Set, Rani Haar, Antique Pendant, and Heavy Necklace designs. You can browse the catalog or ask the showroom about exact availability.`;
+            return `Namaste ji, ${businessProfile.shortName} gold, diamond, antique aur silver jewellery offer karta hai. Website par earrings, necklaces, rings, bangles, pendants, men chains, Maang Tikka, Gold Set, Wedding Set, Rani Haar, Antique Pendant aur Heavy Necklace designs listed hain.\n\nExact stock aur latest designs ke liye showroom ko call/WhatsApp karna best rahega.`;
 
         case 'careers':
-            return `For jobs or applications, please visit the Careers page and apply online. The team can also guide you at ${businessProfile.phone} if you need help with an application.`;
+            return `Namaste ji, jobs ya applications ke liye Careers page par apply kar sakte hain. Agar application me help chahiye ho to SGV team ko call/WhatsApp kar sakte hain: ${businessProfile.phone}.`;
 
         default:
             if (sentences.length === 0) {
-                return `I can help with ${businessProfile.shortName} collections, BIS/HUID hallmarking, gold pricing basics, bridal consultations, custom jewellery, showroom visits, maintenance, and buyback. For anything very specific, WhatsApp ${businessProfile.phone} and the team can confirm it.`;
+                return getOutOfScopeAnswer();
             }
 
-            return `Here is what I found from ${businessProfile.shortName}'s website:\n\n${sentences.map((sentence) => `- ${sentence}`).join('\n')}\n\nFor exact pricing, current stock, or a personalised recommendation, please call or WhatsApp ${businessProfile.phone}.`;
+            return `Namaste ji, ${businessProfile.shortName} ke verified website context se yeh information mili:\n\n${sentences.map((sentence) => `- ${sentence}`).join('\n')}\n\nExact live pricing, current stock ya personalised recommendation ke liye please call/WhatsApp karein: ${businessProfile.phone}.`;
     }
 };
 
 export const buildRagPayload = (message, history = [], docs = []) => ({
     message,
+    detectedIntent: getIntent(message),
+    requiresLiveVerification: getIntent(message) === 'live',
     history: history.slice(-8).map(({ role, content }) => ({ role, content })),
     business: {
         name: businessProfile.name,
@@ -274,12 +324,22 @@ export const buildRagPayload = (message, history = [], docs = []) => ({
         content,
     })),
     instructions:
-        'Answer as SGV Jewellers customer support. Use only the provided context. If live rates, stock, availability, or policy exceptions are requested, ask the visitor to call or WhatsApp the showroom. Keep answers concise and helpful.',
+        'Answer as SGV Jewellers customer support in warm Indian Hinglish, starting politely when natural with Namaste ji. Use only the provided SGV context or verified live business data. Do not hallucinate, invent rates, invent stock, invent offers, or answer unrelated topics. If the user asks outside SGV jewellery/business scope, refuse politely and explain you can help only with SGV collections, BIS/HUID, showroom, pricing process, care, policies, bridal/custom jewellery, and careers. If live rates, current stock, availability, offers, delivery status, or policy exceptions are requested, answer only when verified live data is available and return verifiedLiveData: true; otherwise ask the visitor to call or WhatsApp the showroom. Keep answers concise and welcoming.',
 });
 
 export const getChatbotResponse = async (message, history = []) => {
     const docs = retrieveRelevantDocs(message, 5);
+    const intent = getIntent(message);
     const apiUrl = import.meta.env.VITE_CHATBOT_API_URL?.trim();
+
+    if (isOutOfScope(message, docs)) {
+        return {
+            answer: getOutOfScopeAnswer(),
+            sources: [],
+            usedApi: false,
+            whatsappHref: makeWhatsAppLink(`Hello SGV Jewellers, I need help with: ${message}`),
+        };
+    }
 
     if (apiUrl) {
         try {
@@ -294,7 +354,25 @@ export const getChatbotResponse = async (message, history = []) => {
             const payload = await response.json();
             const answer = payload.answer || payload.message || payload.response;
 
+            if (payload.outOfScope === true) {
+                return {
+                    answer: getOutOfScopeAnswer(),
+                    sources: [],
+                    usedApi: true,
+                    whatsappHref: makeWhatsAppLink(`Hello SGV Jewellers, I need help with: ${message}`),
+                };
+            }
+
             if (answer) {
+                if (intent === 'live' && payload.verifiedLiveData !== true) {
+                    return {
+                        answer: getDeterministicAnswer(message, docs),
+                        sources: sourcesForMessage(message, docs),
+                        usedApi: false,
+                        whatsappHref: makeWhatsAppLink(`Hello SGV Jewellers, I need help with: ${message}`),
+                    };
+                }
+
                 return {
                     answer,
                     sources: sourcesForMessage(message, docs),
