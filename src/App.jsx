@@ -12,6 +12,7 @@ import JobApplication from './pages/JobApplication';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import HRDashboard from './pages/HRDashboard';
+import CRMDashboard from './pages/CRMDashboard';
 import UserProfile from './pages/UserProfile';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -39,6 +40,7 @@ function App() {
             <Route path="contact" element={<Navigate to="/contact-us" replace />} />
             <Route path="blogs" element={<Navigate to="/blog" replace />} />
             <Route path="login" element={<Login />} />
+            <Route path="admin/crm-demo" element={<CRMDashboard demoMode />} />
             <Route
               path="profile"
               element={
@@ -52,6 +54,14 @@ function App() {
               element={
                 <ProtectedRoute allowedRoles={['admin', 'staff']}>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admin/crm"
+              element={
+                <ProtectedRoute allowedRoles={['admin', 'staff', 'hr']}>
+                  <CRMDashboard />
                 </ProtectedRoute>
               }
             />
