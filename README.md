@@ -6,7 +6,9 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 The website includes a floating 24/7 chatbot widget powered by a local RAG-style retrieval layer. It answers from SGV Jewellers business facts, product/category information, contact details, policies, and blog content already bundled with the site.
 
-By default it works without any backend and uses a careful local answer fallback. To connect a real server-side LLM endpoint, set `VITE_CHATBOT_API_URL` in your environment. The browser will send the visitor's message, recent chat history, and retrieved SGV context to that endpoint. Keep OpenAI or other LLM API keys only on the server, never in Vite client code.
+By default it works without any backend and uses a careful local answer fallback. To connect a real server-side LLM endpoint, set `VITE_CHATBOT_API_URL` in your environment. The browser will send the visitor's message, recent chat history, retrieved SGV context, detected intent, and a live-verification flag to that endpoint. Keep OpenAI or other LLM API keys only on the server, never in Vite client code.
+
+For live rates, stock, availability, offers, or delivery status, the backend response must include `verifiedLiveData: true`; otherwise the widget will not trust the response and will ask the visitor to call/WhatsApp the showroom. Out-of-scope questions should return `outOfScope: true` or be refused by the backend in the same guarded style.
 
 Currently, two official plugins are available:
 
