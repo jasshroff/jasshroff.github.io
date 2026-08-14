@@ -26,10 +26,8 @@ const QUERY_EXPANSIONS = {
     job: ['career', 'hiring', 'apply', 'vacancy'],
     kidhar: ['address', 'location', 'showroom', 'directions'],
     open: ['hours', 'timing', 'showroom'],
-    price: ['pricing', 'cost', 'rate', 'weight', 'making', 'charges', 'gst'],
+    pooja: ['puja', 'silver', 'mandir', 'diya', 'kalash', 'thali', 'coin', 'coins'],
     repair: ['maintenance', 'polish', 'cleaning', 'service'],
-    silver: ['925', 'sterling', 'chandi', 'payal', 'kada', 'pooja', 'coin', 'clean'],
-    kitna: ['price', 'pricing', 'rate', 'cost'],
     whatsapp: ['contact', 'message', 'phone'],
 };
 

@@ -1,11 +1,12 @@
 /**
- * Blog data for SGV Jewellers — 6 SEO-optimized articles
+ * Blog data for SGV Jewellers — SEO-optimized articles
  * Each article includes full content, metadata, and SEO fields.
  */
 
 export const blogCategories = [
   'All',
   'Gold Guide',
+  'Silver Guide',
   'Wedding',
   'Investment',
   'Care & Maintenance',
@@ -599,6 +600,254 @@ Ears are getting more attention than ever:
 The best bridal jewellery is jewellery that makes **you** feel beautiful and connected to your roots. Don't follow trends blindly — use them as inspiration to find your unique expression.
 
 Visit SGV Jewellers for a personalised bridal consultation. Our master craftsmen will help you blend these trends with your personal style, family traditions, and budget to create your perfect bridal ensemble.
+    `,
+  },
+  {
+    id: 7,
+    slug: 'ultimate-925-sterling-silver-jewellery-guide',
+    title: 'The Ultimate 925 Sterling Silver Jewellery Buying Guide',
+    excerpt: 'Everything you need to know about 925 sterling silver — purity standards, BIS silver hallmarking, popular jewellery styles, and how to verify authentic chandi.',
+    category: 'Silver Guide',
+    author: 'SGV Jewellers',
+    date: '2025-08-01',
+    readTime: '7 min read',
+    tags: ['925 Silver', 'Sterling Silver', 'Silver Purity', 'Buying Guide', 'Silver Hallmarking'],
+    image: '/images/main/catalog/311x289_2.png',
+    metaTitle: 'Ultimate 925 Sterling Silver Jewellery Guide | Purity & Hallmarking | SGV',
+    metaDescription: 'Complete buying guide to 925 sterling silver in India. Learn what the 925 mark means, BIS silver hallmarking (IS 2112), pricing formula, and how to choose authentic silver jewellery.',
+    content: `
+## What is 925 Sterling Silver?
+
+925 Sterling Silver is an alloy consisting of **92.5% pure silver** and 7.5% other metals (typically copper). Pure fine silver (99.9% pure) is naturally very soft, malleable, and prone to bending or scratching. Adding 7.5% copper gives the metal the tensile strength and durability needed for wearable ornaments, intricate filigree, and everyday use while preserving silver's brilliant white sheen.
+
+When you purchase genuine sterling silver, you will notice a tiny stamp inscribed as **"925"**, **"SS"**, or **"Sterling"**.
+
+## Sterling Silver (925) vs Pure Fine Silver (999)
+
+Understanding the distinction helps you make the right choice for ornaments versus investment:
+
+| Characteristic | 925 Sterling Silver | 999 Fine Silver |
+|----------------|---------------------|-----------------|
+| Silver Purity | 92.5% Pure Silver | 99.9% Pure Silver |
+| Hardness | High (Durable for daily wear) | Soft & easily deformed |
+| Common Uses | Rings, Payals, Kadas, Chains, Sets | Silver Coins, Pooja Bars, Idols |
+| Hallmark Mark | 925 | 999 |
+| Lustre | Crisp, reflective silver shine | Deep, warm white glow |
+
+## BIS Hallmarking for Silver in India
+
+Just like gold, the Bureau of Indian Standards (BIS) certifies silver under the **IS 2112 standard**. A hallmarked silver item contains:
+
+1. **BIS Triangular Logo**: Proof of testing at a recognized assaying centre
+2. **Purity / Fineness Grade**:
+   - **999**: 99.9% pure fine silver
+   - **925**: 92.5% sterling silver
+   - **900**: 90.0% coin silver
+   - **800**: 80.0% German silver grade
+3. **Assaying Centre Identification Mark**
+4. **Jeweller's Identification Mark**
+
+> At SGV Jewellers, our silver collection is strictly assayed and certified so you always receive genuine 92.5% sterling purity with guaranteed exchange value.
+
+## Popular Silver Jewellery Collections
+
+Silver (Chandi) holds a cherished place in Indian households, offering both traditional elegance and contemporary styling:
+
+### 1. Traditional Silver Payals & Anklets
+From delicate single-strand chains for modern daily wear to ornate bridal ghungroo payals, sterling silver anklets remain a cultural staple in Madhya Pradesh and Maharashtra.
+
+### 2. Silver Toe Rings (Bichhiya)
+Crafted in 925 silver with floral engravings, stone accents, and adjustable bands for comfort and bridal tradition.
+
+### 3. Men's Silver Kadas & Chains
+Substantial, masculine silver kadas with antique oxidised finish, Lord Shiva / Trishul engravings, and heavy link chains.
+
+### 4. Contemporary Sterling Silver Rings & Earrings
+Rhodium-plated 925 silver rings, cubic zirconia solitaires, and oxidised jhumkas that provide the luxury of fine jewellery at an accessible price.
+
+## How Silver Jewellery is Priced
+
+Silver jewellery pricing is transparent:
+
+**Price = (Silver Weight in grams × Current Silver Rate per gram) + Making Charges + 3% GST**
+
+- **Silver Rate**: Determined daily by spot market prices per kilogram or gram
+- **Making Charges**: Reflect the artisan labour and detail (typically ₹15 - ₹40 per gram for silver)
+- **GST**: 3% standard tax on precious metals
+
+## How to Test and Verify Real 925 Silver
+
+1. **Look for the 925 Stamp**: Check inner bands, clasps, and links with a magnifying loupe.
+2. **The Magnet Test**: Pure and sterling silver is non-magnetic. If a magnet strongly attracts the piece, it contains excessive iron or nickel.
+3. **Sound / Ring Test**: When gently tapped with another metal, genuine silver produces a clear, high-pitched bell-like ring for 1-2 seconds.
+4. **Thermal Conductivity**: Silver is an exceptional heat conductor — an ice cube placed directly on silver begins melting almost immediately.
+
+## Why Choose SGV Jewellers for Silver?
+
+Since 1938, Shree Gopaldas Vallabhdas Jewellers has operated a dedicated **Silver Department** led by Mr. Hitesh Shroff in Burhanpur. We guarantee:
+- 100% genuine 925 sterling purity certification
+- Transparent weight and rate billing
+- Wide selection from bridal chandi to pooja thalis and modern rings
+- Lifetime cleaning, polishing, and buyback support
+    `,
+  },
+  {
+    id: 8,
+    slug: 'silver-pooja-articles-gifting-traditions-guide',
+    title: 'Silver Pooja Articles & Gifting: Traditions, Auspiciousness & Selection',
+    excerpt: 'Explore the spiritual significance of silver in Indian rituals. A complete guide to selecting silver pooja items, 999 silver coins, baby gifts, and festive treasures.',
+    category: 'Silver Guide',
+    author: 'SGV Jewellers',
+    date: '2025-08-08',
+    readTime: '6 min read',
+    tags: ['Silver Pooja Items', 'Silver Gifting', 'Dhanteras', 'Silver Coins', 'Diwali Gifts'],
+    image: '/images/main/catalog/311x289_4.png',
+    metaTitle: 'Silver Pooja Articles & Gifting Guide | Coins & Diya | SGV Jewellers',
+    metaDescription: 'Complete guide to buying silver pooja articles, Lakshmi-Ganesh idols, 999 pure silver coins, and auspicious gifts for Dhanteras, weddings, and housewarmings.',
+    content: `
+## The Sacred Significance of Silver in Indian Culture
+
+In Vedic tradition and Vastu Shastra, silver (**Chandi / Rajat**) is associated with the **Moon (Chandra)** and **Lord Shiva**. It represents purity, coolness, calmness, and spiritual elevation. Performing daily prayers using silver utensils is believed to attract positive cosmic vibrations and the blessings of Goddess Lakshmi into the home.
+
+Unlike many metals, silver does not react harmfully with water, milk, or holy panchamrit, making it the most auspicious and hygienic metal for religious ceremonies.
+
+## Must-Have Silver Pooja Articles for Home Mandir
+
+Setting up an auspicious home temple often begins with these timeless silver items:
+
+### 1. Silver Diya / Deepak (Akhand Jyot)
+Lighting a silver diya during morning and evening prayers dispels negativity. Choose from traditional single-wick lotus diyas, ornate Peacock diyas, or tall standing kuthuvilakku styles.
+
+### 2. Lakshmi-Ganesh & Saraswati Silver Murti
+Crafted in 999 fine silver or 925 sterling with fine facial sculpting. Ideal for Diwali pooja, business inaugurations, and daily home worship.
+
+### 3. Silver Kalash & Lota
+Used for holding sacred water, Ganga jal, or milk during abhishekham and Griha Pravesh (housewarming) rituals.
+
+### 4. Silver Aarti Thali Set
+A complete puja thali typically includes:
+- Embossed silver plate (Thali)
+- Incense stick (Agarbatti) holder
+- Dhoop cup & camphor burner (Karpoor aarti)
+- Roli / Chawal / Kumkum bowls
+- Holy bell (Ghanti)
+
+### 5. Silver Panchpatra & Achmani Spoon
+Essential for offering holy water and taking prasad during daily rituals.
+
+## 999 Pure Silver Coins & Bars for Auspicious Occasions
+
+Silver coins are the hallmark of festive gifting across India:
+
+- **Dhanteras & Diwali**: Lakshmi-Ganesh embossed 999 silver coins (10g, 20g, 50g, 100g)
+- **Akshaya Tritiya**: Symbol of unending wealth and prosperity
+- **Wedding Shagun**: Gifting silver coins inscribed with Om, Swastik, or customized family initials
+- **Corporate & Milestone Gifting**: 999 fine silver bars in certified tamper-proof packaging
+
+## Silver Gifting for Life Milestones
+
+Silver has traditionally been the gift of choice for welcoming new beginnings:
+
+### Newborn Babies (Mundan & Annaprashan)
+- **Silver Bowl & Spoon Set**: For the baby's first solid food ceremony (Chandi ki katori-chammach)
+- **Silver Nazariya Anklets / Bangles**: Black-and-silver bead bracelets to ward off the evil eye
+- **Silver Jhunjhuna (Rattle)**: Safe, non-toxic, and heirloom-quality toy
+
+### Housewarming (Griha Pravesh)
+- Silver Ganesh idol for the entrance foyer
+- Silver coconut (Shreefal) representing eternal abundance
+- Silver glass sets for offering refreshing drinks to honoured guests
+
+## Choosing Purity: 999 vs 925 for Silver Articles
+
+- **Pooja Idols & Coins**: Opt for **999 Pure Fine Silver** for maximum spiritual purity and clean metallic shine.
+- **Utensils, Thalis & Diyas**: Opt for **925 Sterling Silver** or sturdy 900 grade silver so the pieces resist bending when held or cleaned.
+
+## SGV Jewellers' Assurance
+
+Every silver coin, idol, and pooja article at SGV Jewellers is weighed accurately on calibrated electronic balances and backed by our hallmark guarantee. Visit our showroom in Burhanpur to explore our complete Chandi collection.
+    `,
+  },
+  {
+    id: 9,
+    slug: 'how-to-clean-prevent-tarnish-silver-jewellery-guide',
+    title: 'How to Clean and Prevent Tarnish on Silver Jewellery at Home',
+    excerpt: 'Learn why silver turns black and discover safe, effective home remedies to restore the radiant mirror shine of your silver payals, rings, and utensils.',
+    category: 'Care & Maintenance',
+    author: 'SGV Jewellers',
+    date: '2025-08-12',
+    readTime: '5 min read',
+    tags: ['Silver Cleaning', 'Tarnish Prevention', 'Jewellery Care', 'Sterling Silver Care'],
+    image: '/images/main/catalog/311x289_5.png',
+    metaTitle: 'How to Clean Silver Jewellery at Home & Prevent Tarnish | SGV Jewellers',
+    metaDescription: 'Easy, safe DIY methods to clean tarnished silver jewellery and pooja utensils at home using baking soda and foil. Expert tarnish prevention and storage tips.',
+    content: `
+## Why Does Silver Turn Black (Tarnish)?
+
+One of the most common questions customers ask is: *"Why did my genuine silver payal or ring turn black?"*
+
+Contrary to popular myth, **tarnishing is proof of genuine silver**, not a sign of fake metal. Silver reacts naturally with trace amounts of **sulphur and hydrogen sulphide** in the atmosphere to form a microscopic surface layer of **Silver Sulphide (Ag2S)**, which appears yellow, brown, or black.
+
+Factors that accelerate silver tarnishing:
+- High humidity and moisture
+- Skin perspiration and body lotions
+- Perfumes, hairsprays, and cosmetics
+- Contact with household chemicals, rubber bands, or wool
+
+## Safe DIY Home Methods to Clean Silver
+
+Restore your silver's brilliant lustre with these proven, safe household techniques:
+
+### Method 1: The Aluminium Foil & Baking Soda Bath (Best for Intricate Jewellery & Chains)
+
+This scientific electrochemical method reverses the tarnish without stripping away any silver metal.
+
+1. Line a glass or ceramic bowl completely with aluminium foil (shiny side facing up).
+2. Place your tarnished silver pieces inside the bowl, ensuring they touch the foil.
+3. Sprinkle **1 to 2 tablespoons of baking soda** over the jewellery.
+4. Pour **boiling hot water** into the bowl until the items are fully submerged.
+5. You will notice gentle bubbling and a faint sulphur smell as the sulphur transfers from the silver to the aluminium.
+6. Let soak for 3 to 5 minutes.
+7. Remove with kitchen tongs, rinse thoroughly under clean cool water, and pat dry with a microfiber cloth.
+
+> **Caution**: Do not use this boiling bath on silver jewellery set with pearls, turquoise, emeralds, or glued gemstones, as extreme heat can loosen settings or damage porous stones.
+
+### Method 2: Mild Soap & Soft Brush (For Daily Cleaning & Light Dirt)
+
+1. Mix warm water with a few drops of mild, phosphate-free dish soap.
+2. Dip a baby toothbrush with ultra-soft bristles into the soapy water.
+3. Gently brush along the links, crevices, and carvings of your payals or kadas.
+4. Rinse with clean water and dry completely.
+
+### Method 3: Specialised Silver Polishing Cloth
+
+Keep a dual-layer silver polishing cloth in your jewellery drawer. The inner treated cloth removes tarnish, while the outer micro-suede cloth buffs the metal to a radiant mirror finish.
+
+## What You Should NEVER Use on Silver
+
+Avoid these common household hacks that cause permanent micro-scratches and surface pitting:
+
+- ❌ **Toothpaste**: Most toothpastes contain abrasive calcium carbonate or silica that leaves fine scratches on polished silver.
+- ❌ **Chlorine Bleach & Harsh Detergents**: Rapidly oxidises silver and corrodes alloy solder joints.
+- ❌ **Paper Towels or Tissues**: Wood pulp fibres in paper towels can scratch delicate silver finishes.
+- ❌ **Vinegar on Oxidised / Antique Silver**: Removes intentional blackened antique detailing (patina).
+
+## Best Storage Practices to Prevent Tarnish
+
+Prevention is always easier than cleaning:
+
+- **Airtight Ziplock Bags**: Store individual silver pieces in sealed plastic zip pouches to block air and moisture.
+- **Silica Gel Packs**: Place small silica gel packets inside your jewellery box to absorb ambient humidity.
+- **Anti-Tarnish Paper Strips**: Keep an activated charcoal or anti-tarnish strip in your jewellery locker.
+- **Store Separately from Gold**: Never mix silver and gold together in the same compartment.
+
+## Wear It Often!
+
+Fun fact: **Wearing your sterling silver jewellery regularly actually prevents tarnish!** The natural friction from daily movement and skin contact continuously buffs the surface and prevents sulphur buildup.
+
+## SGV Jewellers' Lifetime Silver Care
+
+If your heirloom silver pieces, heavy bridal sets, or intricate temple idols need deep ultrasonic cleaning or professional buffing, bring them to our Burhanpur showroom. We offer complimentary cleaning and expert inspection for all our valued patrons.
     `,
   },
 ];
