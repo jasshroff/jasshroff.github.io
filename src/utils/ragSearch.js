@@ -21,9 +21,10 @@ const QUERY_EXPANSIONS = {
     gold: ['22k', '916', 'hallmark', 'rate', 'purity'],
     job: ['career', 'hiring', 'apply', 'vacancy'],
     open: ['hours', 'timing', 'showroom'],
-    price: ['pricing', 'cost', 'rate', 'weight', 'making', 'charges', 'gst'],
+    pooja: ['puja', 'silver', 'mandir', 'diya', 'kalash', 'thali', 'coin', 'coins'],
     repair: ['maintenance', 'polish', 'cleaning', 'service'],
-    silver: ['925', 'sterling'],
+    silver: ['925', 'sterling', 'chandi', 'payal', 'bichhiya', 'kada', 'pooja', 'coin', 'tarnish', 'clean'],
+    tarnish: ['black', 'clean', 'polish', 'silver', 'baking', 'soda'],
     whatsapp: ['contact', 'message', 'phone'],
 };
 
