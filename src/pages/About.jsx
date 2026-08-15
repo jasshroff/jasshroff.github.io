@@ -6,7 +6,7 @@ import { Award, ShieldCheck, HeartHandshake, Sparkles } from 'lucide-react';
 const About = () => {
     const team = [
         { name: 'Shree Gopaldas Vallabhdas Shroff', role: 'Founder', image: '/images/team-1-270x236.jpg', desc: 'The visionary founder who established the hallmark of purity in 1938.' },
-        { name: 'Shree Damodardas Gopaldas Shroff', role: 'Proprietor', image: '/images/team-2-270x236.jpg', desc: 'Pioneered the retail expansion and earned Burhanpur\'s trust over 5 decades.' },
+        { name: 'Shree Damodardas Gopaldas Shroff', role: 'Proprietor', image: '/public/images/team-2-270x236.jpg', desc: 'Pioneered the retail expansion and earned Burhanpur\'s trust over 5 decades.' },
         { name: 'Rakesh Damodardas Shroff', role: 'Gold Department', image: '/images/team-3-270x236.jpg', desc: 'Expert in 22K hallmarked gold curation and traditional craftsmanship.' },
         { name: 'Hitesh Damodardas Shroff', role: 'Silver Department', image: '/images/team-4-270x236.png', desc: 'Specialist in 925 sterling silver and contemporary bridal ornaments.' },
     ];
