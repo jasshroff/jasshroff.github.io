@@ -174,8 +174,28 @@ const About = () => {
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-maroon-950 mt-1">The Family Behind 85+ Years of Trust</h2>
                     <div className="w-24 h-1 bg-gold-500 mx-auto mt-4"></div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-                    {team.map((member, idx) => (
+                {/* Founder Section */}
+                <div className="flex justify-center mb-10 sm:mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                        className="group text-center bg-white p-4 sm:p-5 rounded shadow-sm hover:shadow-md transition-all max-w-sm w-full"
+                    >
+                        <div className="mb-4 sm:mb-5 overflow-hidden rounded shadow-md aspect-[270/236] bg-gray-100 relative grayscale hover:grayscale-0 transition-all duration-700">
+                            <OptimizedImage src={team[0].image} alt={`${team[0].name} - ${team[0].role} at SGV Jewellers Burhanpur`} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                        </div>
+                        <h3 className="text-base sm:text-lg md:text-xl font-serif font-bold text-maroon-950">{team[0].name}</h3>
+                        <p className="text-gold-600 text-xs sm:text-sm uppercase tracking-wider font-medium mt-1">{team[0].role}</p>
+                        <p className="text-gray-500 text-xs sm:text-sm mt-2">{team[0].desc}</p>
+                        <p className="text-gray-400 text-xs italic mt-2">(Late)</p>
+                    </motion.div>
+                </div>
+
+                {/* Other Team Members */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+                    {team.slice(1).map((member, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
