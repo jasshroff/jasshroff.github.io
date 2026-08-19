@@ -64,7 +64,7 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="w-full">
+        <>
             {/* Top Bar - Contact Info */}
             <div className="bg-maroon-950 text-gold-200 py-2 px-4 hidden md:block text-sm border-b border-gold-900/20">
                 <div className="container mx-auto flex justify-between items-center">
@@ -255,7 +255,7 @@ const Navbar = () => {
                     )}
                 </AnimatePresence>
             </nav>
-        </header>
+        </>
     );
 };
 
